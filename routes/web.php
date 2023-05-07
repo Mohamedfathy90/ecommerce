@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['user','auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -29,13 +31,21 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware('admin');
+Route::middleware('role:admin')->group(function(){
+Route::get('/admin/dashboard', [AdminController::class , 'index']);
+});
+
+Route::get('/admin/login', [AdminController::class , 'create']);
+Route::post('/admin/login', [AdminController::class , 'store']);
+
+
+
+
+
 
 Route::get('/vendor/dashboard', function () {
     return view('vendor.dashboard');
-})->middleware(['auth','verified','vendor']);
+})->middleware('role:vendor');
 
 
 
