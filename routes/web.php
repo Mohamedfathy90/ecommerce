@@ -33,7 +33,10 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('role:admin')->group(function(){
 Route::get('/admin/dashboard', [AdminController::class , 'index']);
+Route::get('/admin/profile', [AdminController::class , 'ViewAdminProfile']);
+Route::post('/admin/profile', [AdminController::class , 'UpdateAdminProfile']);
 });
+
 
 Route::get('/admin/login', [AdminController::class , 'create']);
 Route::post('/admin/login', [AdminController::class , 'store']);
