@@ -39,17 +39,28 @@
 				</div>
 				<div>
 					<h4 class="logo-text">Rukada</h4>
+					<h4 class="logo-text">Admin</h4>
 				</div>
 				<div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
 				</div>
 			</div>
 			<!--navigation-->
 			<ul class="metismenu" id="menu">
+
+					<li>
+					<a href="/admin/dashboard">
+						<div class="parent-icon"><i class='bx bx-cookie'></i>
+						</div>
+						<div class="menu-title">Dashboard</div>
+					</a>
+				</li>
+
+
 				<li>
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class='bx bx-home-circle'></i>
 						</div>
-						<div class="menu-title">Dashboard</div>
+						<div class="menu-title">Brand</div>
 					</a>
 					<ul>
 						<li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>Default</a>
@@ -95,6 +106,7 @@
 						<div class="menu-title">Widgets</div>
 					</a>
 				</li>
+
 				<li>
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class='bx bx-cart'></i>
@@ -295,6 +307,7 @@
 						<div class="menu-title">Pricing</div>
 					</a>
 				</li>
+
 				<li class="menu-label">Charts & Maps</li>
 				<li>
 					<a class="has-arrow" href="javascript:;">
@@ -311,6 +324,9 @@
 						</li>
 					</ul>
 				</li>
+
+
+
 				<li>
 					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon"><i class="bx bx-map-alt"></i>
@@ -353,6 +369,7 @@
 				</li>
 				<li>
 					<a href="https://themeforest.net/user/codervent" target="_blank">
+					<a href=" " target="_blank">
 						<div class="parent-icon"><i class="bx bx-support"></i>
 						</div>
 						<div class="menu-title">Support</div>
@@ -476,16 +493,16 @@
 											</div>
 										</a>
 										<a class="dropdown-item" href="javascript:;">
-										<div class="d-flex align-items-center">
-									<div class="notify bg-light-info text-info"><i class="bx bx-home-circle"></i>
-			</div>
-			<div class="flex-grow-1">
-				<h6 class="msg-name">New Product Approved <span
-			class="msg-time float-end">2 hrs ago</span></h6>
-				<p class="msg-info">Your new product has approved</p>
-			</div>
-		</div>
-	</a>
+											<div class="d-flex align-items-center">
+												<div class="notify bg-light-info text-info"><i class="bx bx-home-circle"></i>
+												</div>
+												<div class="flex-grow-1">
+													<h6 class="msg-name">New Product Approved <span
+												class="msg-time float-end">2 hrs ago</span></h6>
+													<p class="msg-info">Your new product has approved</p>
+												</div>
+											</div>
+										</a>
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="notify bg-light-danger text-danger"><i class="bx bx-message-detail"></i>
@@ -690,10 +707,10 @@
 					</div>
 					<div class="user-box dropdown">
 						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="{{asset('back')}}/assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
+							<img src="{{ asset('back')}}/assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
 							<div class="user-info ps-3">
-								<p class="user-name mb-0">Pauline Seitz</p>
 								<p class="designattion mb-0">Web Designer</p>
+		<p class="user-name mb-0">{{ Auth::user()->name }}</p>
 							</div>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end">
@@ -710,22 +727,21 @@
 							<li>
 								<div class="dropdown-divider mb-0"></div>
 							</li>
-							<li>
 							<form action="/logout" method="post">
 								@csrf
-							<button class="dropdown-item"><i class='bx bx-log-out-circle'></i><span>Logout</span></button>
-							</form>	
+							<li><button class="dropdown-item" ><i class='bx bx-log-out-circle'></i><span>Logout</span></button>
 							</li>
+							</form>
 						</ul>
 					</div>
 				</nav>
 			</div>
 		</header>
 		<!--end header -->
+		
 		<!--start page wrapper -->
 		<div class="page-wrapper">
-			<div class="page-content">
-
+		<div class="page-content">
 					<div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
 						<div class="col">
 							<div class="card radius-10 bg-gradient-deepblue">
@@ -804,7 +820,7 @@
 						 </div>
 						</div>
 					</div><!--end row-->
-				
+
 				<div class="row">
 					<div class="col-12 col-lg-8 col-xl-8 d-flex">
 					   <div class="card radius-10 w-100">
@@ -846,7 +862,7 @@
 						</div>
 					   </div>
 					</div>
-			   
+
 					<div class="col-12 col-lg-4 col-xl-4 d-flex">
 					   <div class="card radius-10 overflow-hidden w-100">
 						  <div class="card-body">
@@ -890,6 +906,8 @@
 						</div>
 					</div>
 				   </div><!--End Row-->
+
+
 
 
 				   <div class="row row-cols-1 row-cols-lg-3">
@@ -977,31 +995,31 @@
 										 <td>$2,089</td>
 										 <td><span id="trendchart2"></span></td>
 									 </tr>
-				   
+
 									 <tr>
 										 <td><i class="flag-icon flag-icon-in me-2"></i>India</td>
 										 <td>$3,039</td>
 										 <td><span id="trendchart3"></span></td>
 									 </tr>
-				   
+
 									 <tr>
 										 <td><i class="flag-icon flag-icon-gb me-2"></i>UK</td>
 										 <td>$2,309</td>
 										 <td><span id="trendchart4"></span></td>
 									 </tr>
-				   
+
 									 <tr>
 										 <td><i class="flag-icon flag-icon-de me-2"></i>Germany</td>
 										 <td>$7,209</td>
 										 <td><span id="trendchart5"></span></td>
 									 </tr>
-									 
+
 								 </tbody>
 							 </table>
 							 </div>
 						  </div>
 						</div>
-						
+
 						<div class="col-12 col-lg-12 col-xl-6">
 						   <div class="row">
 							 <div class="col-12 col-lg-6">
@@ -1048,21 +1066,21 @@
 										  <div class="progress-bar bg-success" style="width:80%"></div>
 									  </div>
 								   </div>
-								   
+
 								   <div class="progress-wrapper mb-4">
 									  <p>Images <span class="float-right">10GB</span></p>
 									  <div class="progress" style="height:5px;">
 										  <div class="progress-bar bg-danger" style="width:60%"></div>
 									  </div>
 								   </div>
-								   
+
 								   <div class="progress-wrapper mb-4">
 									   <p>Mails <span class="float-right">5GB</span></p>
 									  <div class="progress" style="height:5px;">
 										  <div class="progress-bar bg-primary" style="width:40%"></div>
 									  </div>
 								   </div>
-								   
+
 								</div>
 							  </div>
 							 </div>
@@ -1089,7 +1107,7 @@
 							 </div>
 						  </div>
 						</div>
-				  
+
 						<div class="col-12 col-lg-6 col-xl-8 d-flex">
 						   <div class="card radius-10 w-100">
 							   <div class="card-header border-bottom bg-transparent">
@@ -1186,8 +1204,7 @@
 						   </div>
 						</div>
 					  </div><!--End Row-->
-
-
+					  
 					  <div class="card radius-10">
 						<div class="card-body">
 							<div class="d-flex align-items-center">
@@ -1378,6 +1395,172 @@
 												<div class="d-flex order-actions">	<a href="javascript:;" class=""><i class="bx bx-cog"></i></a>
 													<a href="javascript:;" class="ms-4"><i class="bx bx-down-arrow-alt"></i></a>
 												</div>
+	<tr>
+		<td>#897656</td>
+		<td>
+			<div class="d-flex align-items-center">
+				<div class="recent-product-img">
+					<img src="{{ asset('back')}}/assets/images/icons/chair.png" alt="">
+				</div>
+				<div class="ms-2">
+					<h6 class="mb-1 font-14">Light Blue Chair</h6>
+				</div>
+			</div>
+		</td>
+		<td>Brooklyn Zeo</td>
+		<td>12 Jul 2020</td>
+		<td>$64.00</td>
+		<td>
+			<div class="badge rounded-pill bg-light-info text-info w-100">In Progress</div>
+		</td>
+		<td>
+			<div class="d-flex order-actions">	<a href="javascript:;" class=""><i class="bx bx-cog"></i></a>
+				<a href="javascript:;" class="ms-4"><i class="bx bx-down-arrow-alt"></i></a>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>#987549</td>
+		<td>
+			<div class="d-flex align-items-center">
+				<div class="recent-product-img">
+					<img src="{{asset('back')}}/assets/images/icons/shoes.png" alt="">
+				</div>
+				<div class="ms-2">
+					<h6 class="mb-1 font-14">Green Sport Shoes</h6>
+				</div>
+			</div>
+		</td>
+		<td>Martin Hughes</td>
+		<td>14 Jul 2020</td>
+		<td>$45.00</td>
+		<td>
+			<div class="badge rounded-pill bg-light-success text-success w-100">Completed</div>
+		</td>
+		<td>
+			<div class="d-flex order-actions">	<a href="javascript:;" class=""><i class="bx bx-cog"></i></a>
+				<a href="javascript:;" class="ms-4"><i class="bx bx-down-arrow-alt"></i></a>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>#685749</td>
+		<td>
+			<div class="d-flex align-items-center">
+				<div class="recent-product-img">
+					<img src="{{asset('back')}}/assets/images/icons/headphones.png" alt="">
+				</div>
+				<div class="ms-2">
+					<h6 class="mb-1 font-14">Red Headphone 07</h6>
+				</div>
+			</div>
+		</td>
+		<td>Shoan Stephen</td>
+		<td>15 Jul 2020</td>
+		<td>$67.00</td>
+		<td>
+			<div class="badge rounded-pill bg-light-danger text-danger w-100">Cancelled</div>
+		</td>
+		<td>
+			<div class="d-flex order-actions">	<a href="javascript:;" class=""><i class="bx bx-cog"></i></a>
+				<a href="javascript:;" class="ms-4"><i class="bx bx-down-arrow-alt"></i></a>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>#887459</td>
+		<td>
+			<div class="d-flex align-items-center">
+				<div class="recent-product-img">
+					<img src="{{asset('back')}}/assets/images/icons/idea.png" alt="">
+				</div>
+				<div class="ms-2">
+					<h6 class="mb-1 font-14">Mini Laptop Device</h6>
+				</div>
+			</div>
+		</td>
+		<td>Alister Campel</td>
+		<td>18 Jul 2020</td>
+		<td>$87.00</td>
+		<td>
+			<div class="badge rounded-pill bg-light-success text-success w-100">Completed</div>
+		</td>
+		<td>
+			<div class="d-flex order-actions">	<a href="javascript:;" class=""><i class="bx bx-cog"></i></a>
+				<a href="javascript:;" class="ms-4"><i class="bx bx-down-arrow-alt"></i></a>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>#335428</td>
+		<td>
+			<div class="d-flex align-items-center">
+				<div class="recent-product-img">
+					<img src="{{asset('back')}}/assets/images/icons/user-interface.png" alt="">
+				</div>
+				<div class="ms-2">
+					<h6 class="mb-1 font-14">Purple Mobile Phone</h6>
+				</div>
+			</div>
+		</td>
+		<td>Keate Medona</td>
+		<td>20 Jul 2020</td>
+		<td>$75.00</td>
+		<td>
+			<div class="badge rounded-pill bg-light-info text-info w-100">In Progress</div>
+		</td>
+		<td>
+			<div class="d-flex order-actions">	<a href="javascript:;" class=""><i class="bx bx-cog"></i></a>
+				<a href="javascript:;" class="ms-4"><i class="bx bx-down-arrow-alt"></i></a>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>#224578</td>
+		<td>
+			<div class="d-flex align-items-center">
+				<div class="recent-product-img">
+					<img src="{{asset('back')}}/assets/images/icons/watch.png" alt="">
+				</div>
+				<div class="ms-2">
+					<h6 class="mb-1 font-14">Smart Hand Watch</h6>
+				</div>
+			</div>
+		</td>
+		<td>Winslet Maya</td>
+		<td>22 Jul 2020</td>
+		<td>$80.00</td>
+		<td>
+			<div class="badge rounded-pill bg-light-danger text-danger w-100">Cancelled</div>
+		</td>
+		<td>
+			<div class="d-flex order-actions">	<a href="javascript:;" class=""><i class="bx bx-cog"></i></a>
+				<a href="javascript:;" class="ms-4"><i class="bx bx-down-arrow-alt"></i></a>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>#447896</td>
+		<td>
+			<div class="d-flex align-items-center">
+				<div class="recent-product-img">
+					<img src="{{asset('back')}}/assets/images/icons/tshirt.png" alt="">
+				</div>
+				<div class="ms-2">
+					<h6 class="mb-1 font-14">T-Shirt Blue</h6>
+				</div>
+			</div>
+		</td>
+		<td>Emy Jackson</td>
+		<td>28 Jul 2020</td>
+		<td>$96.00</td>
+		<td>
+			<div class="badge rounded-pill bg-light-success text-success w-100">Completed</div>
+		</td>
+		<td>
+			<div class="d-flex order-actions">	<a href="javascript:;" class=""><i class="bx bx-cog"></i></a>
+				<a href="javascript:;" class="ms-4"><i class="bx bx-down-arrow-alt"></i></a>
+			</div>
 											</td>
 										</tr>
 									</tbody>
@@ -1385,7 +1568,6 @@
 							</div>
 						</div>
 					</div>
-
 			</div>
 		</div>
 		<!--end page wrapper -->
