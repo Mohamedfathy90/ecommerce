@@ -35,6 +35,8 @@ Route::middleware('role:admin')->group(function(){
 Route::get('/admin/dashboard', [AdminController::class , 'index']);
 Route::get('/admin/profile', [AdminController::class , 'ViewAdminProfile']);
 Route::post('/admin/profile', [AdminController::class , 'UpdateAdminProfile']);
+Route::get('/admin/updatePassword', [AdminController::class , 'ViewPassword']);
+Route::post('/admin/updatepassword', [AdminController::class , 'UpdatePassword']);
 });
 
 

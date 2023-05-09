@@ -69,8 +69,13 @@
 	<script src="{{asset('back')}}/assets/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
 	<script src="{{asset('back')}}/assets/plugins/jquery-knob/excanvas.js"></script>
 	<script src="{{asset('back')}}/assets/plugins/jquery-knob/jquery.knob.js"></script>
-	  <script>
-		 $(document).ready(function(){
+	<script src="{{asset('back')}}/assets/js/index.js"></script>
+	<!--app JS-->
+	<script src="{{asset('back')}}/assets/js/app.js"></script> 
+	
+	
+	<script>
+		$(document).ready(function(){
 		$('#image').change(function(e){
 			var reader = new FileReader();
 			reader.onload = function(e){
@@ -79,10 +84,8 @@
 			reader.readAsDataURL(e.target.files['0']);
 		});
 	});
-	  </script>
-	  <script src="{{asset('back')}}/assets/js/index.js"></script>
-	<!--app JS-->
-	<script src="{{asset('back')}}/assets/js/app.js"></script>
+	</script>
+	  
 </body>
 
 </html>
