@@ -31,11 +31,11 @@
 	<div class="wrapper">
 		
 		<!--sidebar wrapper -->
-		@include('admin.includes.sidebar')
+		@yield('sidebar')
 		<!--end sidebar wrapper -->
 		
 		<!--start header -->
-		@include ('admin.includes.header')
+		@yield('header')
 		<!--end header -->
 		
 		<!--start page wrapper -->

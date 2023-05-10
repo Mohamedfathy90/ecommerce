@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2023 at 10:29 PM
+-- Generation Time: May 10, 2023 at 02:33 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -118,11 +118,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `name`, `email`, `email_verified_at`, `password`, `image`, `phone`, `address`, `role`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jonathon Lowe MD', 'Prof. Halie Orn', 'bryce24@example.net', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/00cccc?text=consequatur', '+1 (619) 320-5447', '1487 Kennedi Manor Suite 096\nSouth Normaburgh, AZ 78933', 'vendor', 'inactive', 'ppLYCPQ23sFgUY4N9uwMmOhXA5oUH1xKM08HGCYl9XFlMY22oosBX1kN6pIt', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
+(1, 'Jonathon Lowe MD', 'Prof. Halie Orn', 'bryce24@example.net', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/00cccc?text=consequatur', '+1 (619) 320-5447', '1487 Kennedi Manor Suite 096\nSouth Normaburgh, AZ 78933', 'vendor', 'inactive', 'gS1csLUYbEpeHsnjo0aWHonqLDkohrpnfaJSS66sIxfGe71lASJ4ukezdFTG', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
 (2, 'George Kessler DDS', 'Thad Herzog', 'london80@example.org', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/0066ee?text=assumenda', '1-928-289-4641', '77903 Javonte Ferry\nStiedemannfort, GA 19522-3724', 'user', 'inactive', 'ROkuklFj9S85pHpkFOs2QrBSHUCRrEUhiCyPYiz7KvDumcKM1uoLnd1bH7YC', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
 (3, 'Elvera Mertz', 'Travon Gaylord', 'monahan.leonardo@example.org', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/009955?text=expedita', '803-264-7275', '85243 West Place Apt. 393\nBiankachester, ND 45962-3522', 'vendor', 'active', 'eAJXQ0MVwX', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
 (4, 'Desiree Schiller', 'Ms. Katelin Kuvalis V', 'shanie.stanton@example.com', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/00ee77?text=autem', '530.798.2703', '7739 Christophe Crescent Suite 292\nNew Jakaylaberg, NJ 64483-9085', 'vendor', 'inactive', '6v8TgTaU7j', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
-(5, 'Donnie Murphy', 'Susie Stehr', 'jesse00@example.com', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '/storage/profile_images/1765359116157547.JPG', '+17708817559', 'seif street', 'admin', 'inactive', 'UJJu8BLeQN0vMjrOB07wu3fiyD6tGnlFleLCeBzJdJleAGxbhgjWzIQdSvxY', '2023-05-06 16:24:15', '2023-05-08 17:27:28'),
+(5, 'Donnie Murphy', 'Susie Stehr', 'mohamedamin45@yahoo.com', '2023-05-06 16:24:15', '$2y$10$3AljK3HAKvpEkYm7GGO00.SXy6Uep847oBgW2uqj21tQdgI0NHYtm', '/storage/profile_images/1765359116157547.JPG', '+17708817559', 'seif street', 'admin', 'inactive', 'tQtiXzxnCrc2rmntzthHw4Y5ki9XS9scCrArH0eILnLkm4nNH3bBKGu5KjRY', '2023-05-06 16:24:15', '2023-05-09 21:46:15'),
 (6, 'Brenden Halvorson I', 'Retha Dietrich', 'brown.warren@example.com', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/000099?text=molestiae', '585.395.9666', '39044 Mckenzie Glens\nWest Myra, FL 57399', 'admin', 'active', 'ffKn8Xx8rd', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
 (7, 'Ernesto Kovacek', 'Mr. Leif Walker V', 'newton.upton@example.org', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/00ffdd?text=iste', '+1-769-315-6683', '3145 Green Stream Apt. 891\nLuciuschester, DC 70278', 'user', 'active', 'yVZdE8wRYK', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
 (8, 'Bartholome Yundt PhD', 'Nora Abshire', 'mreynolds@example.net', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/00ff88?text=repudiandae', '(551) 249-9621', '762 Alyce Keys\nEast Alisaview, VA 69759', 'vendor', 'active', 'mShvKMhRGr', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),

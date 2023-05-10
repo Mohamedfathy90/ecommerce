@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\traits\ImageTrait;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rules\Unique;
 
 class AdminController extends Controller
 {
@@ -41,6 +43,7 @@ class AdminController extends Controller
         
         request()->validate([
             'name'     =>  ['required','min:5','max:15','string'] ,
+            'email'    =>  ['required' , 'email' , Rule::unique('users','email')->ignore(auth()->user())],
             'address'  =>  ['string'] ,
             'image'    =>  ['image']
         ]);
@@ -48,9 +51,10 @@ class AdminController extends Controller
         $image = $this->Saveimage('/profile_images/');
               
         User::where('id',Auth::id())->update([
-            'name'    => request('name') ,
-            'address' => request('address') ,
-            'image'   => $image ,
+            'name'     => request('name') ,
+            'email'    => request('email') ,
+            'address'  => request('address') ,
+            'image'    => $image ,
         ]);
 
         toastr()->success('Profile Updated Successfully');
@@ -79,6 +83,5 @@ class AdminController extends Controller
     
     
     }
-
 
 }

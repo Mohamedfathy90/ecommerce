@@ -1,15 +1,18 @@
 @extends('layouts.dashboard_layout')
 @section('title', 'User Profile')
 
+
 @section('sidebar')
-@include('admin.includes.sidebar')
+@include('vendor.includes.sidebar')
 @endsection
 
 @section('header')
-@include('admin.includes.header')
+@include('vendor.includes.header')
 @endsection
 
+
 @section('content')
+
 <div class="page-wrapper">
 			<div class="page-content"> 
 				<!--breadcrumb-->
@@ -34,7 +37,7 @@
 								<div class="card">
 									<div class="card-body">
 										<div class="d-flex flex-column align-items-center text-center">
-											<img src="{{auth()->user()->image}}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+											<img src="{{auth()->user()->image}}"  class="rounded-circle p-1 bg-primary" width="110">
 											<div class="mt-3">
 												<h4>{{auth()->user()->name}}</h4>
 												<p class="text-secondary mb-1">{{auth()->user()->email}}</p>
@@ -61,7 +64,7 @@
 								<div class="card">
 									<div class="card-body">
 										
-										<form action="/admin/profile" method="post" enctype="multipart/form-data">
+										<form action="/vendor/profile" method="post" enctype="multipart/form-data">
 											@csrf
 											<div class="row mb-3">
 											<div class="col-sm-3">

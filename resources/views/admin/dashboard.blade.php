@@ -1,7 +1,14 @@
-
-@extends('admin.layout')
+@extends('layouts.dashboard_layout')
 
 @section('title','Admin Dashboard')
+
+@section('sidebar')
+@include('admin.includes.sidebar')
+@endsection
+
+@section('header')
+@include('admin.includes.header')
+@endsection
 
 @section('content')
 <div class="page-wrapper">

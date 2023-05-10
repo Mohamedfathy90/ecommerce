@@ -2,13 +2,12 @@
 @section('title' , 'Update Password')
 
 @section('sidebar')
-@include('admin.includes.sidebar')
+@include('vendor.includes.sidebar')
 @endsection
 
 @section('header')
-@include('admin.includes.header')
+@include('vendor.includes.header')
 @endsection
-
 
 
 @section ('content')

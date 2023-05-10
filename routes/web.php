@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,27 @@ Route::post('/admin/profile', [AdminController::class , 'UpdateAdminProfile']);
 Route::get('/admin/updatePassword', [AdminController::class , 'ViewPassword']);
 Route::post('/admin/updatepassword', [AdminController::class , 'UpdatePassword']);
 });
+
+
+
+Route::middleware('role:vendor')->group(function(){
+Route::get('/vendor/dashboard', [VendorController::class , 'index']);
+Route::get('/vendor/profile', [VendorController::class , 'ViewvendorProfile']);
+Route::post('/vendor/profile', [VendorController::class , 'UpdatevendorProfile']);
+Route::get('/vendor/updatePassword', [VendorController::class , 'ViewPassword']);
+Route::post('/vendor/updatepassword', [VendorController::class , 'UpdatePassword']);
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::get('/admin/login', [AdminController::class , 'create']);
