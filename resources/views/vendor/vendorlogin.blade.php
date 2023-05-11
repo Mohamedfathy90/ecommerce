@@ -18,7 +18,7 @@
 	<link href="{{asset('back')}}/assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{{asset('back')}}/assets/css/app.css" rel="stylesheet">
 	<link href="{{asset('back')}}/assets/css/icons.css" rel="stylesheet">
-	<title>Admin Login</title>
+	<title>Vendor Login</title>
 </head>
 
 <body class="bg-login">
@@ -35,16 +35,16 @@
 							<div class="card-body">
 								<div class="border p-4 rounded">
 									<div class="text-center">
-										<h3 class="">Admin Sign-in</h3>
+										<h3 class="">Vendor Sign-in</h3>
 	
 									</div>
 									
 									<div class="form-body">
-										<form class="row g-3" action="/admin/login" method="post">
+										<form class="row g-3" action="/vendor/login" method="post">
                                             @csrf
 											<div class="col-12">
 												<label for="inputEmailAddress" class="form-label">Email Address</label>
-												<input type="email" name="email" class="form-control" id="inputEmailAddress" placeholder="Email Address">
+												<input type="email" value="{{old('email')}}" name="email" class="form-control" id="inputEmailAddress" placeholder="Email Address">
 												@error('email')
 												<span class="text-danger">{{ $message }}</span>
 												@enderror

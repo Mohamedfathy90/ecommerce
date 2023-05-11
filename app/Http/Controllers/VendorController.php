@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\traits\ImageTrait;
+use App\Http\Traits\UpdatePasswordTrait;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
@@ -18,12 +19,14 @@ class VendorController extends Controller
 {
     
     use ImageTrait;
+    use UpdatePasswordTrait;
     
     public function index(){
-        return view ('vendor.dashboard');
+        return view ('vendor.vendordashboard');
     }
+    
     public function create(){
-        return view ('vendor.login');
+        return view ('vendor.vendorlogin');
     }
     
     public function store(LoginRequest $request): RedirectResponse
@@ -40,48 +43,32 @@ class VendorController extends Controller
     }
     
     public function UpdatevendorProfile(){
-        
-        request()->validate([
-            'name'     =>  ['required','min:5','max:15','string'] ,
-            'email'    =>  ['required' , 'email' , Rule::unique('users','email')->ignore(auth()->user())],
-            'address'  =>  ['string'] ,
-            'image'    =>  ['image']
+        $credentials = request()->validate([
+            'name'         =>  ['required','min:5','max:15','string'] ,
+            'email'        =>  ['required' , 'email' , Rule::unique('users','email')->ignore(auth()->user())],
+            'address'      =>  ['string'] ,
+            'vendor_info'  =>  ['min:0' , 'max:1000'] ,
+            'image'        =>  ['image']
         ]);
-       
-        $image = $this->Saveimage('/profile_images/');
+           
+        $credentials['image'] = $this->Saveimage('/profile_images/');
               
-        User::where('id',Auth::id())->update([
-            'name'     => request('name') ,
-            'email'    => request('email') ,
-            'address'  => request('address') ,
-            'image'    => $image ,
-        ]);
+        Auth::user()->update($credentials);
 
         toastr()->success('Profile Updated Successfully');
         return back();
     }
 
     public function ViewPassword(){
-        return view ('vendor.updatepassword');
+        return view ('vendor.vendorupdatepassword');
     }
 
     public function UpdatePassword(){
-       request()->validate([
-        'old_password' => ['required','current_password'] , 
-        'new_password' => ['required','confirmed' , Rules\password::defaults()]
-       ]);
-       
-       Auth::user()->update([
-        'password' => Hash::make(request('new_password')) ,
-       ]);
     
-    toastr()->success('Password Updated Successfully');
+    $this->ChangePassword();
+    
+    return redirect ('/vendor/login');
 
-    auth()->logout();
-
-    return redirect ("/vendor/login");
-    
-    
     }
 
 }

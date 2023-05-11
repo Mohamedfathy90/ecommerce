@@ -44,7 +44,7 @@
                                             @csrf
 											<div class="col-12">
 												<label for="inputEmailAddress" class="form-label">Email Address</label>
-												<input type="email" name="email" class="form-control" id="inputEmailAddress" placeholder="Email Address">
+												<input type="email" value="{{old('email')}}" name="email" class="form-control" id="inputEmailAddress" placeholder="Email Address">
 												@error('email')
 												<span class="text-danger">{{ $message }}</span>
 												@enderror

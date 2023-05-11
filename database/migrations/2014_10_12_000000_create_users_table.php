@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image')->default('storage/profile_images/nophoto.jpg');
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
+            $table->text('vendor_info')->nullable();
             $table->enum('role',['admin','user','vendor'])->default('user');
             $table->enum('status',['active','inactive'])->default('active');
             $table->rememberToken();

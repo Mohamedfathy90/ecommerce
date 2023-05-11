@@ -32,6 +32,9 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
+Route::get('/admin/login', [AdminController::class , 'create']);
+Route::post('/admin/login', [AdminController::class , 'store']);
 Route::middleware('role:admin')->group(function(){
 Route::get('/admin/dashboard', [AdminController::class , 'index']);
 Route::get('/admin/profile', [AdminController::class , 'ViewAdminProfile']);
@@ -41,7 +44,8 @@ Route::post('/admin/updatepassword', [AdminController::class , 'UpdatePassword']
 });
 
 
-
+Route::get('/vendor/login', [VendorController::class , 'create']);
+Route::post('/vendor/login', [VendorController::class , 'store']);
 Route::middleware('role:vendor')->group(function(){
 Route::get('/vendor/dashboard', [VendorController::class , 'index']);
 Route::get('/vendor/profile', [VendorController::class , 'ViewvendorProfile']);
@@ -49,36 +53,6 @@ Route::post('/vendor/profile', [VendorController::class , 'UpdatevendorProfile']
 Route::get('/vendor/updatePassword', [VendorController::class , 'ViewPassword']);
 Route::post('/vendor/updatepassword', [VendorController::class , 'UpdatePassword']);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::get('/admin/login', [AdminController::class , 'create']);
-Route::post('/admin/login', [AdminController::class , 'store']);
-
-
-
-
-
-
-Route::get('/vendor/dashboard', function () {
-    return view('vendor.dashboard');
-})->middleware('role:vendor');
-
-
-
-
-
-
 
 
 require __DIR__.'/auth.php';

@@ -23,7 +23,7 @@
 			
 			<div class="card-body">
 
-				<form method="post" action="/admin/updatepassword"  >
+				<form method="post" action="/vendor/updatepassword"  >
 				@csrf
 
 				<div class="row mb-3">
