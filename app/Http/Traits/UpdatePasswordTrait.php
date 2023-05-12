@@ -10,7 +10,7 @@ trait UpdatePasswordTrait {
      
     public function ChangePassword(){
         
-        request()->validate([
+        $this->validate([
             'old_password' => ['required','current_password'] , 
             'new_password' => ['required','confirmed' , Rules\password::defaults()]
            ]);

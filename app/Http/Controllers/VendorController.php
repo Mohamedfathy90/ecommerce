@@ -63,12 +63,5 @@ class VendorController extends Controller
         return view ('vendor.vendorupdatepassword');
     }
 
-    public function UpdatePassword(){
-    
-    $this->ChangePassword();
-    
-    return redirect ('/vendor/login');
-
-    }
 
 }

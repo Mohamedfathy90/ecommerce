@@ -5,6 +5,7 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{csrf_token()}}">
 	<!--favicon-->
 	<link rel="icon" href="{{asset('back')}}/assets/images/favicon-32x32.png" type="image/png" />
 	<!--plugins-->
@@ -24,6 +25,7 @@
 	<link rel="stylesheet" href="{{asset('back')}}/assets/css/semi-dark.css" />
 	<link rel="stylesheet" href="{{asset('back')}}/assets/css/header-colors.css" />
 	<title>@yield('title')</title>
+	@livewireStyles
 </head>
 
 <body>
@@ -73,8 +75,7 @@
 	<!--app JS-->
 	<script src="{{asset('back')}}/assets/js/app.js"></script> 
 	
-	
-	<script>
+	<script>	
 		$(document).ready(function(){
 		$('#image').change(function(e){
 			var reader = new FileReader();
@@ -83,9 +84,11 @@
 			}
 			reader.readAsDataURL(e.target.files['0']);
 		});
-	});
+		});
+	
+		
 	</script>
-	  
+	@livewireScripts 
 </body>
 
 </html>
