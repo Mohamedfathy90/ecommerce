@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    @yield('title')
+    <title>@yield('title')</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -160,6 +160,28 @@
     <!-- Template  JS -->
     <script src="{{asset('front')}}/assets/js/main.js?v=5.3"></script>
     <script src="{{asset('front')}}/assets/js/shop.js?v=5.3"></script>
+
+    <script>	
+		$(document).ready(function(){ 
+            $('#image').change(function(e){
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#showImage').attr('src',e.target.result);
+				$('#showImage').show();
+			}
+			reader.readAsDataURL(e.target.files['0']);
+		});
+    });
+	
+	
+	</script>
+
+
+
+
+
+
+
 </body>
 
 </html>

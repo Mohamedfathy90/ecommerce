@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Traits\ImageTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,16 +12,8 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
-    public function edit(Request $request): View
-    {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
-    }
-
+   
+    use ImageTrait;
     /**
      * Update the user's profile information.
      */
@@ -32,9 +25,13 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
+        $request->user()->image = $this->Saveimage('/profile_images/');
+
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        toastr()->success('Profile Updated Successfully');
+
+        return back();
     }
 
     /**

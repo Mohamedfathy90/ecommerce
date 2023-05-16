@@ -2,6 +2,7 @@
 
 namespace App\Http\Traits;
 
+use Illuminate\Support\Facades\Auth;
 
 trait ImageTrait {
     
@@ -16,7 +17,10 @@ trait ImageTrait {
         }
 
         else{
+            if(Auth::check())
             return auth()->user()->image ;
+            else
+            return "/storage/profile_images/nophoto.jpg";
         }
         
        
