@@ -16,6 +16,8 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{asset('front')}}/assets/css/plugins/animate.min.css" />
     <link rel="stylesheet" href="{{asset('front')}}/assets/css/main.css?v=5.3" />
+
+<livewire:styles>
 </head>
 
 <body>
@@ -179,7 +181,7 @@
 
 
 
-
+<livewire:scripts>
 
 
 </body>

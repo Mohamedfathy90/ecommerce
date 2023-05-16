@@ -156,7 +156,7 @@
                                             <div class="card-header">
                                                 <h5>Account Details</h5>
                                             </div>
-                                            @livewire('UserProfileUpdate')
+                                            @livewire('user-profile-update')
                                         </div>
                                     </div>
                                 </div>
