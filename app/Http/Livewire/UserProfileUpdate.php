@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 
 use App\Http\Traits\ImageTrait;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Livewire\Component;
@@ -18,9 +19,9 @@ class UserProfileUpdate extends Component
     public $address ;
     public $image ;
     public $old_password ;
-    public $new_password ;
-    
-    
+    public $newpassword ;
+    public $newpassword_confirmation ;
+    public $password ;
     
     public function mount()
     {
@@ -39,22 +40,31 @@ class UserProfileUpdate extends Component
             
         $rules['name']     = ['required','min:5','max:15','string'] ;
         $rules['email']    = ['required' , 'email' , Rule::unique('users','email')->ignore(auth()->user())] ;
-        $rules['address']  = ['string'] ;
+       
         
-        if ($this->old_password){
+        if ($this->old_password != null){
             $rules['old_password'] =  ['current_password'];     
-            $rules['new_password'] =  ['confirmed', Rules\password::defaults()];     
+            $rules['newpassword'] =   ['confirmed', Rules\password::defaults()];
         }
         
-        $credentials = $this->validate($rules);
-        
-        
-        if (auth()->user()->isDirty('email')) {
+      $this->validate($rules);
+ 
+        auth()->user()->fill([
+            'name'     => $this->name ,
+            'email'    => $this->email ,
+        ]);
+
+        if ($this->old_password != null){
+        auth()->user()->update([
+        'password' => Hash::make($this->newpassword) ,
+        ]);
+        }
+
+        if (auth()->user()->isdirty('email')) {
             auth()->user()->email_verified_at = null;
         }
 
-        
-        auth()->user()->update($credentials);
+        auth()->user()->save();
         
         toastr()->success('Profile Updated Successfully');
 
