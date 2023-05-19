@@ -25,6 +25,7 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
+        if(request()->has('image'))
         $request->user()->image = $this->Saveimage('/profile_images/');
 
         $request->user()->save();

@@ -57,7 +57,7 @@
             <div class="container">
                 <div class="header-wrap">
                     <div class="logo logo-width-1">
-                        <a href="index.html"><img src="{{asset('front')}}/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                        <a href="/"><img src="{{asset('front')}}/assets/imgs/theme/logo.svg" alt="logo" /></a>
                     </div>
                     <div class="header-right">
                         <div class="search-style-2">
@@ -152,15 +152,18 @@
                                         </div>
                                     </div>
                                 </div>
+                                
+    
+                                @auth
                                 <div class="header-action-icon-2">
-                                    <a href="page-account.html">
+                                    <a href="/dashboard">
                                         <img class="svgInject" alt="Nest" src="{{asset('front')}}/assets/imgs/theme/icons/icon-user.svg" />
                                     </a>
-                                    <a href="page-account.html"><span class="lable ml-0">Account</span></a>
+                                    <a href="/dashboard"><span class="lable ml-0">Account</span></a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                         <ul>
                                             <li>
-                                                <a href="page-account.html"><i class="fi fi-rs-user mr-10"></i>My Account</a>
+                                                <a href="/dashboard"><i class="fi fi-rs-user mr-10"></i>My Account</a>
                                             </li>
                                             <li>
                                                 <a href="page-account.html"><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
@@ -175,11 +178,24 @@
                                                 <a href="page-account.html"><i class="fi fi-rs-settings-sliders mr-10"></i>Setting</a>
                                             </li>
                                             <li>
-                                                <a href="page-login.html"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a>
+                                            <form id="logout-form" action="/logout" method="post" >
+                                                @csrf
+                                            <a onclick="document.getElementById('logout-form').submit()"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a>
+                                            </form>    
+                                           
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
+                                @endauth
+                                @guest
+                                <div class="header-action-icon-2">
+                                <a href="/login">
+                                        <img class="svgInject" alt="Nest" src="{{asset('front')}}/assets/imgs/theme/icons/icon-user.svg" />
+                                    </a>
+                                    <a href="/login"><span class="lable ml-0">Login</span></a>
+                                </div>
+                                @endguest
                             </div>
                         </div>
                     </div>
@@ -191,7 +207,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
                     <div class="logo logo-width-1 d-block d-lg-none">
-                        <a href="index.html"><img src="{{asset('front')}}/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                        <a href="/"><img src="{{asset('front')}}/assets/imgs/theme/logo.svg" alt="logo" /></a>
                     </div>
                     <div class="header-nav d-none d-lg-flex">
                         <div class="main-categori-wrap d-none d-lg-block">

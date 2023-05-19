@@ -36,6 +36,9 @@
                                             <a class="nav-link" id="account-detail-tab" data-bs-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fi-rs-user mr-10"></i>Account details</a>
                                         </li>
                                         <li class="nav-item">
+                                            <a class="nav-link" id="update-password-tab" data-bs-toggle="tab" href="#update-password" role="tab" aria-controls="update-password" aria-selected="true"><i class="fi fi-rs-lock" ></i>  Update Password</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <form id="logout" action="/logout" method="post">
                                             @csrf
                                             <a class="nav-link" onclick="document.getElementById('logout').submit(); return false;"><i class="fi-rs-sign-out mr-10"></i>Logout</a>
@@ -151,6 +154,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="tab-pane fade" style="padding-top:0px;" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                                         <div class="card">
                                             <div class="card-header">
@@ -159,24 +163,21 @@
                                             @livewire('user-profile-update')
                                         </div>
                                     </div>
+                                    
+                                    <div class="tab-pane fade" style="padding-top:0px;" id="update-password" role="tabpanel" aria-labelledby="update-password-tab">
+                                        <div class="card">
+                                            <div class="card-header" style="padding-top:0px;padding-left:0px;padding-bottom:20px;">
+                                                <h5>Update Password</h5>
+                                            </div>
+                                            @livewire('updatepassword')
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-
-
-
-
-
-
-
-
-
-
-
+        </main>
 
 @endsection

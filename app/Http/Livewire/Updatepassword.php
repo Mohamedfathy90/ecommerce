@@ -37,6 +37,9 @@ class Updatepassword extends component
     
             auth()->logout();
 
+            if($this->role == "user")
+            return redirect ('/login');
+            else
             return redirect ('/'.$this->role.'/login');
     }
 

@@ -43,6 +43,7 @@ class VendorController extends Controller
     }
     
     public function UpdatevendorProfile(){
+        
         $credentials = request()->validate([
             'name'         =>  ['required','min:5','max:15','string'] ,
             'email'        =>  ['required' , 'email' , Rule::unique('users','email')->ignore(auth()->user())],
@@ -51,6 +52,7 @@ class VendorController extends Controller
             'image'        =>  ['image']
         ]);
            
+        if(request()->has('image'))
         $credentials['image'] = $this->Saveimage('/profile_images/');
               
         Auth::user()->update($credentials);

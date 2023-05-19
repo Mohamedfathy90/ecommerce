@@ -29,9 +29,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        toastr()->info('welcome Back , '.auth()->user()->name ) ;
+        
         switch(auth()->user()->role){
             case 'user' : 
-                return redirect('dashboard');
+                return redirect('/');
             case 'admin':        
                 return redirect('/admin/dashboard');
             case 'vendor':
@@ -51,6 +53,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        toastr()->info('you are logged out' ) ;
 
         return redirect('/');
     }

@@ -45,7 +45,12 @@ class RegisteredUserController extends Controller
         ] , ['checkbox' => 'please agree our terms']);
 
         
-        $image = $this->Saveimage('/profile_images');
+        if(request()->has('image'))
+        $image = $this->Saveimage('/Brands_images/');
+        
+        else{
+        $image = "/storage/profile_images/nophoto.jpg";
+         }
         
         $user = User::create([
             'name'     => $request->name,

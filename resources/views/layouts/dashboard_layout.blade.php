@@ -20,6 +20,11 @@
 	<link href="{{asset('back')}}/assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{{asset('back')}}/assets/css/app.css" rel="stylesheet">
 	<link href="{{asset('back')}}/assets/css/icons.css" rel="stylesheet">
+
+	<!-- DataTable -->
+	<link href="{{asset('back')}}/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+	<!-- DataTable-->
+	
 	<!-- Theme Style CSS -->
 	<link rel="stylesheet" href="{{asset('back')}}/assets/css/dark-theme.css" />
 	<link rel="stylesheet" href="{{asset('back')}}/assets/css/semi-dark.css" />
@@ -72,6 +77,17 @@
 	<script src="{{asset('back')}}/assets/plugins/jquery-knob/excanvas.js"></script>
 	<script src="{{asset('back')}}/assets/plugins/jquery-knob/jquery.knob.js"></script>
 	<script src="{{asset('back')}}/assets/js/index.js"></script>
+	
+	<!--Datatable-->
+	<script src="{{ asset('back')}}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+	<script>
+	$(document).ready(function() {
+	$('#example').DataTable();
+	} );
+	</script>
+	<!--Datatable-->
+	
+	
 	<!--app JS-->
 	<script src="{{asset('back')}}/assets/js/app.js"></script> 
 	
@@ -81,6 +97,7 @@
 			var reader = new FileReader();
 			reader.onload = function(e){
 				$('#showImage').attr('src',e.target.result);
+				$('#showImage').show();
 			}
 			reader.readAsDataURL(e.target.files['0']);
 		});

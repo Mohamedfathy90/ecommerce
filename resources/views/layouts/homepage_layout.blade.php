@@ -139,6 +139,8 @@
             </div>
         </div>
     </div>
+    
+    
     <!-- Vendor JS-->
     <script src="{{asset('front')}}/assets/js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="{{asset('front')}}/assets/js/vendor/jquery-3.6.0.min.js"></script>

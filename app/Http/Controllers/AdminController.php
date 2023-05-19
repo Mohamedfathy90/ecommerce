@@ -50,9 +50,11 @@ class AdminController extends Controller
             'image'    =>  ['image']
         ]);
        
-        $credential['image'] = $this->Saveimage('/profile_images/');
-              
-        User::where('id',Auth::id())->update($credentials) ;
+        if(request()->has('image')){
+        $credentials['image'] = $this->Saveimage('/profile_images/');
+        }
+    
+        auth()->user()->update($credentials) ;
         
         toastr()->success('Profile Updated Successfully');
 
