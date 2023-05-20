@@ -53,14 +53,11 @@
 				<td>{{$key+1}}</td>
 				<td>{{$brand->name}}</td>
 				<td><img src="{{$brand->image}}" style="width: 70px; height:40px;" ></td>
-				<td>
-				<a href="/edit-brand/{{$brand->id}}" class="btn btn-info">Edit</a>
-				<a onclick="document.getElementById('delete-form{{$brand->id}}').submit()" class="btn btn-danger">Delete</a>
-				<form id = 'delete-form{{$brand->id}}' action="/delete-brand/{{$brand->id}}" method="post">
-				@csrf
-				@method('delete')
-				</form>
-			
+				<td >
+				<a  href="/edit-brand/{{$brand->id}}" class="btn btn-info btn-xs">Edit</a>
+				<a href="{{ route('brand.delete', $brand->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+
+	
 				</td> 
 				</tr>
 			@endforeach
@@ -76,8 +73,6 @@
 
 
 			</div>
-
-
 
 
 @endsection

@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Traits\ImageTrait;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
+use Intervention\Image\Facades\Image;
+
 
 class BrandController extends Controller
 {
     use ImageTrait;
-    
+
     public function index(){
+        confirmDelete("Delete Brand!", "Are you sure you want to delete?");
         return view ('admin.all-brands' , ['brands'=>Brand::all()]);
     }
+    
     public function create(){
         return view ('admin.add-brand');
     }
@@ -28,7 +34,7 @@ class BrandController extends Controller
         $credentials['image'] = $this->Saveimage('/Brands_images/');
         
         else{
-        $credentials['image'] = "/storage/profile_images/nophoto.jpg";
+        $credentials['image'] = "/storage/Brands_images/nophoto.jpg";
          }
 
         Brand::create($credentials);
@@ -48,12 +54,15 @@ class BrandController extends Controller
         ]);
         
         if(request()->has('image')){
+            if(Storage::exists('Brands_images/'.basename($brand->image))) {
+            unlink(storage_path('/app/public/Brands_images/').basename($brand->image));
+            }
         $credentials['image'] = $this->Saveimage('/Brands_images/');
         }
-        
+
         $brand->update($credentials);
         
-        toastr()->success('Brand updated successfully');
+        toastr()->success("Brand has been updated successfully");
 
         return redirect ('/all-brands');
        
@@ -62,7 +71,7 @@ class BrandController extends Controller
     
     public function destroy (Brand $brand) {
         $brand->delete();
-        toastr()->success('Brand deleted successfully');
+        toastr()->info('Brand deleted successfully');
         return redirect ('/all-brands');
     }
 }

@@ -47,7 +47,7 @@ Route::get('/add-brand', [BrandController::class , 'create' ]);
 Route::post('/add-brand', [BrandController::class , 'store' ]);
 Route::get('/edit-brand/{brand}', [BrandController::class , 'show' ]);
 Route::patch('/edit-brand/{brand}', [BrandController::class , 'update' ]);
-Route::delete('/delete-brand/{brand}', [BrandController::class , 'destroy' ]);
+Route::delete('/delete-brand/{brand}', [BrandController::class , 'destroy' ])->name('brand.delete');;
 });
 
 

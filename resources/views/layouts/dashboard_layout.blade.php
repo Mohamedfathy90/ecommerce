@@ -34,7 +34,9 @@
 </head>
 
 <body>
-	<!--wrapper-->
+	
+@include('sweetalert::alert')
+<!--wrapper-->
 	<div class="wrapper">
 		
 		<!--sidebar wrapper -->
@@ -102,10 +104,12 @@
 			reader.readAsDataURL(e.target.files['0']);
 		});
 		});
-	
 		
 	</script>
 	@livewireScripts 
+
+	
+
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2023 at 10:11 PM
+-- Generation Time: May 20, 2023 at 07:08 PM
 -- Server version: 8.0.29
 -- PHP Version: 8.1.6
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `laravel_ecommerce`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `brands`
+--
+
+CREATE TABLE `brands` (
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `brands`
+--
+
+INSERT INTO `brands` (`id`, `name`, `slug`, `image`, `created_at`, `updated_at`) VALUES
+(3, 'Philips', 'Autem ut quia quod magnam dolore iure. Nesciunt quia et blanditiis culpa laboriosam iste aut. A vel reiciendis accusamus rerum cum qui.', '/storage/Brands_images/img_1684575819.png', '2023-05-18 10:37:06', '2023-05-20 07:43:40'),
+(4, 'HP', 'Et ut repellendus repudiandae et. Consequuntur id natus aperiam vel. Et impedit hic ut voluptate modi nam sequi.', '/storage/Brands_images/img_1684575842.png', '2023-05-18 10:37:06', '2023-05-20 07:44:02'),
+(5, 'Toshiba', 'Animi tempora atque fugit totam. Quae perferendis corporis deserunt qui. Voluptatibus exercitationem omnis totam odio non quasi.', '/storage/Brands_images/img_1684575859.png', '2023-05-18 10:37:06', '2023-05-20 07:44:19'),
+(6, 'Samsung', 'Impedit doloribus dicta consequatur corrupti qui. Ea hic ipsam eum nemo beatae maiores et.', '/storage/Brands_images/img_1684575561.png', '2023-05-18 10:37:06', '2023-05-20 10:35:09');
 
 -- --------------------------------------------------------
 
@@ -57,7 +82,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2023_05_18_120737_create_brands_table', 2);
 
 -- --------------------------------------------------------
 
@@ -123,17 +149,24 @@ INSERT INTO `users` (`id`, `username`, `name`, `email`, `email_verified_at`, `pa
 (2, 'George Kessler DDS', 'Thad Herzog', 'london80@example.org', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/0066ee?text=assumenda', '1-928-289-4641', '77903 Javonte Ferry\nStiedemannfort, GA 19522-3724', '', 'user', 'inactive', 'DjVZH3S3idO8405r8icTl8K2voXQQk7wJ69zPIZuWDrSsJDGGvIxcHfNc6cA', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
 (3, 'Elvera Mertz', 'Travon Gaylord', 'monahan.leonardo@example.org', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/009955?text=expedita', '803-264-7275', '85243 West Place Apt. 393\nBiankachester, ND 45962-3522', '', 'vendor', 'active', 'eAJXQ0MVwX', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
 (4, 'Desiree Schiller', 'Ms. Katelin Kuvalis V', 'shanie.stanton@example.com', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/00ee77?text=autem', '530.798.2703', '7739 Christophe Crescent Suite 292\nNew Jakaylaberg, NJ 64483-9085', '', 'vendor', 'inactive', '6v8TgTaU7j', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
-(5, 'Donnie Murphy', 'Susie Stehr', 'mohamedamin45@yahoo.com', '2023-05-06 16:24:15', '$2y$10$GdxFdwnNUnguvJggYsHkqu7XIN09pK4I0S4hQxtqpP3lrYbUHP/ci', '/storage/profile_images/1765359116157547.JPG', '+17708817559', 'seif street', '', 'admin', 'inactive', 'iLAAA990DDHr43OcTWEbDL3xzGjIhkiJqs5aBP1Z1G6wPAbRaAPi9RRPA4Oq', '2023-05-06 16:24:15', '2023-05-10 13:58:12'),
+(5, 'Donnie Murphy', 'Susie Stehr', 'mohamedamin45@yahoo.com', '2023-05-06 16:24:15', '$2y$10$GdxFdwnNUnguvJggYsHkqu7XIN09pK4I0S4hQxtqpP3lrYbUHP/ci', '/storage/profile_images/1765359116157547.JPG', '+17708817559', 'seif street', '', 'admin', 'inactive', 'hOfUA9ynz9lK7DrQEakIuDmBdmgJHX1excPGNtiSH8m9MywKmfwSOeKa1ez4', '2023-05-06 16:24:15', '2023-05-10 13:58:12'),
 (6, 'Brenden Halvorson I', 'Retha Dietrich', 'brown.warren@example.com', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/000099?text=molestiae', '585.395.9666', '39044 Mckenzie Glens\nWest Myra, FL 57399', '', 'admin', 'active', 'ffKn8Xx8rd', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
 (7, 'Ernesto Kovacek', 'Mr. Leif Walker V', 'newton.upton@example.org', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/00ffdd?text=iste', '+1-769-315-6683', '3145 Green Stream Apt. 891\nLuciuschester, DC 70278', '', 'user', 'active', 'yVZdE8wRYK', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
 (8, 'Bartholome Yundt PhD', 'Nora Abshire', 'mreynolds@example.net', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/00ff88?text=repudiandae', '(551) 249-9621', '762 Alyce Keys\nEast Alisaview, VA 69759', '', 'vendor', 'active', 'mShvKMhRGr', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
 (9, 'Elvera Abernathy III', 'Dr. Timothy Jaskolski', 'tyree95@example.com', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/00cc22?text=et', '646-944-6792', '79829 Marshall Route\nLake Myrna, NV 94005', '', 'admin', 'inactive', '5KLwPzhXm8', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
 (10, 'Ottilie Kemmer', 'Mrs. Julie Wisozk', 'cynthia21@example.org', '2023-05-06 16:24:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/007744?text=quaerat', '+18575516274', '9617 Joanie Manors Apt. 904\nGersonview, NM 59678-9463', '', 'vendor', 'active', 'SdlzLDHkme', '2023-05-06 16:24:15', '2023-05-06 16:24:15'),
-(11, 'Ahmed', 'Ahmed Fathy', 'ahmedamin98@yahoo.com', NULL, '$2y$10$1i9yNktR6ZTMa1vUx42.buBJ11I28F/g7OvbR1w/KzFZmGnZxHlna', '/storage/profile_images/nophoto.jpg', NULL, NULL, NULL, 'user', 'active', NULL, '2023-05-13 10:41:58', '2023-05-13 10:41:58');
+(11, 'Ahmed', 'Ahmed Fathy', 'ahmedamin98@yahoo.com', NULL, '$2y$10$9qJnACaSCCVNaTt/KR8BV.4Qgho9uUDlcBjNzDDCoN7c4rY2SM5Iq', '/storage/profile_images/img_1684401701.jpg', NULL, '74 elessewy street', NULL, 'user', 'active', NULL, '2023-05-13 10:41:58', '2023-05-18 08:53:25');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -175,6 +208,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -184,7 +223,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
