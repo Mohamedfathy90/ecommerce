@@ -71,7 +71,10 @@ class BrandController extends Controller
     
     public function destroy (Brand $brand) {
         $brand->delete();
-        toastr()->info('Brand deleted successfully');
-        return redirect ('/all-brands');
+        // toastr()->info('Brand deleted successfully');
+        $message = array('message' => 'Success!', 'title' => 'Updated');
+        return response()->json($message);
+        // return response()->json(['url'=>'/all-brands']);
+        //session()->flash('success','category updated');
     }
 }
