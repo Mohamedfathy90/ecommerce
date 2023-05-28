@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Traits\ImageTrait;
 use App\Models\Brand;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use RealRashid\SweetAlert\Facades\Alert;
-use Intervention\Image\Facades\Image;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 
 class BrandController extends Controller
@@ -15,7 +14,6 @@ class BrandController extends Controller
     use ImageTrait;
 
     public function index(){
-        confirmDelete("Delete Brand!", "Are you sure you want to delete?");
         return view ('admin.all-brands' , ['brands'=>Brand::all()]);
     }
     
@@ -36,7 +34,8 @@ class BrandController extends Controller
         else{
         $credentials['image'] = "/storage/Brands_images/nophoto.jpg";
          }
-
+        
+        $credentials['slug'] = Str::of(request('name'))->slug('-');
         Brand::create($credentials);
         toastr()->success("Brand added successfully");
         return redirect ('/all-brands') ;
@@ -49,17 +48,15 @@ class BrandController extends Controller
     public function update(Brand $brand){
         
         $credentials = request()->validate([
-            'name'  => ['required'] ,
+            'name'  => ['required',Rule::unique('categories','name')->ignore($brand)] ,
             'image' => ['image']
         ]);
         
         if(request()->has('image')){
-            if(Storage::exists('Brands_images/'.basename($brand->image))) {
-            unlink(storage_path('/app/public/Brands_images/').basename($brand->image));
-            }
+        $this->Deleteimage('Brands_images/'.basename($brand->image) , basename($brand->image) );
         $credentials['image'] = $this->Saveimage('/Brands_images/');
         }
-
+        $credentials['slug'] = Str::of(request('name'))->slug('-');
         $brand->update($credentials);
         
         toastr()->success("Brand has been updated successfully");
@@ -71,10 +68,6 @@ class BrandController extends Controller
     
     public function destroy (Brand $brand) {
         $brand->delete();
-        // toastr()->info('Brand deleted successfully');
-        $message = array('message' => 'Success!', 'title' => 'Updated');
-        return response()->json($message);
-        // return response()->json(['url'=>'/all-brands']);
-        //session()->flash('success','category updated');
+        $this->Deleteimage('Brands_images/'.basename($brand->image) , basename($brand->image) );  
     }
 }

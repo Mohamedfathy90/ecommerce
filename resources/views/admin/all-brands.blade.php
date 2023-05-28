@@ -55,7 +55,9 @@
 				<td><img src="{{$brand->image}}" style="width: 70px; height:40px;" ></td>
 				<td >
 				<a href="/edit-brand/{{$brand->id}}" class="btn btn-info btn-xs">Edit</a>
-				<a href="javascript:void(0);" onclick="deletebrand(event)" class="btn btn-danger" >Delete</a>
+				<a href="javascript:void(0);" class="btn btn-danger show_confirm" 
+				data-url="{{route('brand.delete',$brand->id)}},"
+				>Delete</a>
 
 	
 				</td> 
@@ -74,25 +76,5 @@
 
 			</div>
 
-<script>
-function deletebrand(e) {
-e.preventDefault();
-$.ajax({
-headers:{
-'x-csrf-token':$('meta[name="csrf-token"]').attr('content')
-},
-url  : "/delete-brand/{{$brand->id}}" ,
-type : "DELETE" , 
-	
-success : function(response) {
-	$('#{{$brand->id}}').hide() ;
-  toastr.success(response.message, response.title);
 
-    // toastr.success("{!! session()->get('success')!!}");
-} ,
-
-
-});
-}
-</script>
 @endsection

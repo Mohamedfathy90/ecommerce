@@ -15,7 +15,8 @@
 	<link href="{{asset('back')}}/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
 	<!-- loader-->
 	<link href="{{asset('back')}}/assets/css/pace.min.css" rel="stylesheet" />
-	<script src="{{asset('back')}}/assets/js/pace.min.js"></script>
+	
+	<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
 	<!-- Bootstrap CSS -->
 	<link href="{{asset('back')}}/assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{{asset('back')}}/assets/css/app.css" rel="stylesheet">
@@ -25,6 +26,7 @@
 	<link href="{{asset('back')}}/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 	<!-- DataTable-->
 	
+
 	<!-- Theme Style CSS -->
 	<link rel="stylesheet" href="{{asset('back')}}/assets/css/dark-theme.css" />
 	<link rel="stylesheet" href="{{asset('back')}}/assets/css/semi-dark.css" />
@@ -35,7 +37,7 @@
 
 <body>
 	
-@include('sweetalert::alert')
+
 <!--wrapper-->
 	<div class="wrapper">
 		
@@ -63,6 +65,12 @@
 	</div>
 	<!--end wrapper-->
 	
+	<script src="{{asset('back')}}/assets/js/pace.min.js"></script>
+	<!-- Jquery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!-- Jquery -->
+	
+	
 	<!-- Bootstrap JS -->
 	<script src="{{asset('back')}}/assets/js/bootstrap.bundle.min.js"></script>
 	
@@ -78,18 +86,22 @@
 	<script src="{{asset('back')}}/assets/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
 	<script src="{{asset('back')}}/assets/plugins/jquery-knob/excanvas.js"></script>
 	<script src="{{asset('back')}}/assets/plugins/jquery-knob/jquery.knob.js"></script>
-	<script src="{{asset('back')}}/assets/js/index.js"></script>
 	
+	
+	<!--SweetAlert-->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+	
+	<!--SweetAlert-->
+
 	<!--Datatable-->
 	<script src="{{ asset('back')}}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+	<!--Datatable-->
+	
 	<script>
 	$(document).ready(function() {
 	$('#example').DataTable();
 	} );
 	</script>
-	<!--Datatable-->
-	
-	
 	<!--app JS-->
 	<script src="{{asset('back')}}/assets/js/app.js"></script> 
 	
@@ -104,7 +116,46 @@
 			reader.readAsDataURL(e.target.files['0']);
 		});
 		});
+
+	$(document).on('click','.show_confirm',function (event){
+	event.preventDefault();
+	var requestURL= $(this).data('url');
+    swal.fire({
+		title:"Are You sure ?",
+		text:"You won't be able to revert this!" ,
+		icon:"warning" ,
+		showCancelButton: true,
+  		confirmButtonColor: '#3085d6',
+  		cancelButtonColor: '#d33',
+  		confirmButtonText: 'Yes, delete it!'
+	})
+	
+	.then ((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+			headers:{
+			'x-csrf-token':$('meta[name="csrf-token"]').attr('content')
+			},
+			url  : requestURL ,
+			type : "DELETE" , 
 		
+			success : function() {
+			// $('#'+response.cat_id).hide() ;
+            $('#example').load(' #example')
+			Swal.fire(
+      		'Deleted!',
+      		'Item has been deleted.',
+      		'success'
+    		)
+			} 
+		});
+	}
+}
+	)
+}
+)	
+
+	
 	</script>
 	@livewireScripts 
 
