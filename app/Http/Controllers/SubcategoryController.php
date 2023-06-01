@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class SubcategoryController extends Controller
 {
@@ -43,9 +44,9 @@ class SubcategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Subcategory $subcategory)
     {
-        //
+        return view('admin.edit-subcategory' , ['subcategory'=>$subcategory , 'categories'=>Category::all()]);
     }
 
     /**
@@ -59,16 +60,27 @@ class SubcategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Subcategory $subcategory)
     {
-        //
+        $credentials = request()->validate([
+            'name'  => ['required',Rule::unique('subcategories','name')->ignore($subcategory)] ,
+        ]);
+
+        $credentials['category_id'] = request('category_id');
+        $credentials['slug'] = Str::of(request('name'))->slug('-');
+        
+        $subcategory->update($credentials);
+        
+        toastr()->success("Sub-Category has been updated successfully");
+
+        return redirect ('/all-subcategories');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Subcategory $subcategory)
     {
-        //
+        $subcategory->delete();  
     }
 }

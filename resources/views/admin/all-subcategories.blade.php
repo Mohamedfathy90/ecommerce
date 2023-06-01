@@ -41,8 +41,8 @@
 								<thead>
 			<tr>
 				<th>#</th>
-				<th>Category Name </th>
-				<th>Sub-Category Image </th>
+				<th>Main Category  </th>
+				<th>Sub-Category </th>
 				<th>Action</th> 
 			</tr>
 		</thead>

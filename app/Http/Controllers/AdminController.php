@@ -71,4 +71,31 @@ class AdminController extends Controller
         return redirect ('/admin/login');
     }
 
+    public function activevendors(){
+        return view ('admin.active-vendors',['activevendors'=>User::where('role',"vendor")->where('status','active')->get()]);
+    }
+
+    public function inactivevendors(){
+        return view ('admin.inactive-vendors',['inactivevendors'=>User::where('role',"vendor")->where('status','inactive')->get()]);
+    }
+
+    public function vendordetails(User $vendor){
+        return view ('admin.vendordetails',['vendor'=>$vendor]);
+    }
+
+    public function updatevendorstatus(User $vendor){
+        
+        if($vendor->status === 'inactive'){
+        $vendor->update(['status'=>'active']);
+        toastr()->success('Vendor has been activated Successfully');
+        return redirect('/admin/active-vendors');
+        }
+        
+        else{
+        $vendor->update(['status'=>'inactive']);
+        toastr()->success('Vendor has been deactivated Successfully');
+        return redirect('/admin/inactive-vendors');
+        }
+      
+    }
 }

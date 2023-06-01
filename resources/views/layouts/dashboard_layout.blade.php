@@ -8,11 +8,16 @@
 	<meta name="csrf-token" content="{{csrf_token()}}">
 	<!--favicon-->
 	<link rel="icon" href="{{asset('back')}}/assets/images/favicon-32x32.png" type="image/png" />
+	<!--bootstrap-->
+	
+	<link href="{{asset('back')}}/assets/plugins/input-tags/css/tagsinput.css" rel="stylesheet" />
 	<!--plugins-->
+	
 	<link href="{{asset('back')}}/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
 	<link href="{{asset('back')}}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 	<link href="{{asset('back')}}/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
 	<link href="{{asset('back')}}/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+	
 	<!-- loader-->
 	<link href="{{asset('back')}}/assets/css/pace.min.css" rel="stylesheet" />
 	
@@ -21,6 +26,7 @@
 	<link href="{{asset('back')}}/assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{{asset('back')}}/assets/css/app.css" rel="stylesheet">
 	<link href="{{asset('back')}}/assets/css/icons.css" rel="stylesheet">
+	
 
 	<!-- DataTable -->
 	<link href="{{asset('back')}}/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
@@ -138,9 +144,7 @@
 			},
 			url  : requestURL ,
 			type : "DELETE" , 
-		
 			success : function() {
-			// $('#'+response.cat_id).hide() ;
             $('#example').load(' #example')
 			Swal.fire(
       		'Deleted!',
@@ -157,6 +161,25 @@
 
 	
 	</script>
+	
+	
+	<script src="{{ asset('back')}}/assets/plugins/input-tags/js/tagsinput.js"></script>
+
+<script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+</script>
+
+<script>
+   tinymce.init({
+	 selector: '#mytextarea'
+   });
+</script>
+	
+	
+	
+	
+	
+	
+	
 	@livewireScripts 
 
 	

@@ -67,6 +67,19 @@
 				</li>
 				<li>
 					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class='bx bx-home-circle'></i>
+						</div>
+						<div class="menu-title">Manage Products</div>
+					</a>
+					<ul>
+						<li> <a href="/all-products"><i class="bx bx-right-arrow-alt"></i>All Products</a>
+						</li>
+						<li> <a href="/add-product"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="bx bx-category"></i>
 						</div>
 						<div class="menu-title">Application</div>
@@ -94,16 +107,12 @@
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class='bx bx-cart'></i>
 						</div>
-						<div class="menu-title">eCommerce</div>
+						<div class="menu-title">Manage Vendors</div>
 					</a>
 					<ul>
-						<li> <a href="ecommerce-products.html"><i class="bx bx-right-arrow-alt"></i>Products</a>
+						<li> <a href="/admin/active-vendors"><i class="bx bx-right-arrow-alt"></i>Active Vendors</a>
 						</li>
-						<li> <a href="ecommerce-products-details.html"><i class="bx bx-right-arrow-alt"></i>Product Details</a>
-						</li>
-						<li> <a href="ecommerce-add-new-products.html"><i class="bx bx-right-arrow-alt"></i>Add New Products</a>
-						</li>
-						<li> <a href="ecommerce-orders.html"><i class="bx bx-right-arrow-alt"></i>Orders</a>
+						<li> <a href="/admin/inactive-vendors"><i class="bx bx-right-arrow-alt"></i>Inactive Vendors</a>
 						</li>
 					</ul>
 				</li>

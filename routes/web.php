@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubcategoryController;
@@ -45,6 +46,10 @@ Route::get('/admin/profile', [AdminController::class , 'ViewAdminProfile']);
 Route::post('/admin/profile', [AdminController::class , 'UpdateAdminProfile']);
 Route::get('/admin/updatePassword', [AdminController::class , 'ViewPassword']);
 Route::post('/admin/updatepassword', [AdminController::class , 'UpdatePassword']);
+Route::get('/admin/active-vendors', [AdminController::class , 'activevendors']);
+Route::get('/admin/inactive-vendors', [AdminController::class , 'inactivevendors']);
+Route::get('/admin/vendordetails/{vendor}', [AdminController::class , 'vendordetails']);
+Route::post('/admin/updatevendorstatus/{vendor}', [AdminController::class , 'updatevendorstatus']);
 
 Route::get('/all-brands', [BrandController::class , 'index' ]);
 Route::get('/add-brand', [BrandController::class , 'create' ]);
@@ -63,18 +68,24 @@ Route::delete('/delete-category/{category}', [CategoryController::class , 'destr
 Route::get('/all-subcategories', [SubcategoryController::class , 'index' ]);
 Route::get('/add-subcategory', [SubcategoryController::class , 'create' ]);
 Route::post('/add-subcategory', [SubcategoryController::class , 'store' ]);
-Route::get('/edit-subcategory/{category}', [SubcategoryController::class , 'show' ]);
-Route::patch('/edit-subcategory/{category}', [SubcategoryController::class , 'update' ]);
-Route::delete('/delete-subcategory/{category}', [SubcategoryController::class , 'destroy' ])->name('subcategory.delete');
+Route::get('/edit-subcategory/{subcategory}', [SubcategoryController::class , 'show' ]);
+Route::patch('/edit-subcategory/{subcategory}', [SubcategoryController::class , 'update' ]);
+Route::delete('/delete-subcategory/{subcategory}', [SubcategoryController::class , 'destroy' ])->name('subcategory.delete');
 
-
-
+Route::get('/all-products', [ProductController::class , 'index' ]);
+Route::get('/add-product', [ProductController::class , 'create' ]);
+Route::post('/add-product', [ProductController::class , 'store' ]);
+Route::get('/edit-product/{product}', [ProductController::class , 'show' ]);
+Route::patch('/edit-product/{product}', [ProductController::class , 'update' ]);
+Route::delete('/delete-product/{product}', [ProductController::class , 'destroy' ])->name('product.delete');
 
 });
 
 
-Route::get('/vendor/login', [VendorController::class , 'create']);
-Route::post('/vendor/login', [VendorController::class , 'store']);
+Route::get('/vendor/register', [VendorController::class , 'create']);
+Route::post('/vendor/register', [VendorController::class , 'store']);
+Route::get('/vendor/login', [VendorController::class , 'loginpage']);
+Route::post('/vendor/login', [VendorController::class , 'loginrequest']);
 Route::middleware('role:vendor')->group(function(){
 Route::get('/vendor/dashboard', [VendorController::class , 'index']);
 Route::get('/vendor/profile', [VendorController::class , 'ViewvendorProfile']);

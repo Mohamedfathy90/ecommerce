@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rules\Unique;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Arr;
 
 class VendorController extends Controller
 {
@@ -26,10 +28,33 @@ class VendorController extends Controller
     }
     
     public function create(){
+        return view ('vendor.vendorregister');
+    }
+
+    
+    public function store(){
+        $credentials = request()->validate([
+            'name'     => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255' , "unique:users,username"],
+            'email'    => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone'    => ['required'],
+            'checkbox' => ['accepted']
+        ] , ['checkbox' => 'please agree our terms']);
+        
+        $credentials['role']     = 'vendor' ; 
+        $credentials['password'] = Hash::make(request('password')); 
+        User::create(Arr::except($credentials, ['checkbox']));
+        Toastr()->success("Vendor Created Successfully !!");
+        return redirect('/vendor/login');
+    }
+    
+    
+    public function loginpage(){
         return view ('vendor.vendorlogin');
     }
     
-    public function store(LoginRequest $request): RedirectResponse
+    public function loginrequest(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
 
@@ -38,6 +63,7 @@ class VendorController extends Controller
         return redirect()->intended('vendor/dashboard');
     }
 
+    
     public function ViewvendorProfile() {
         return view ('vendor.vendorprofile');
     }

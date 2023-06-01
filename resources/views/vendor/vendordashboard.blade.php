@@ -13,8 +13,14 @@
 
 @section('content')
 <div class="page-wrapper">
-		<div class="page-content">
-					<div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+		<div class="page-content">	
+		@if(auth()->user()->status === 'active')
+		<h4> Vendor Account is <span class="text-success">Active</span> </h4>
+		@else
+		<h4> Vendor Account is <span class="text-danger">Inactive</span> </h4>
+		<p class="text-danger"><b> please wait until admin approve your account</b></p>
+		@endif
+		<div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
 						<div class="col">
 							<div class="card radius-10 bg-gradient-deepblue">
 							 <div class="card-body">
