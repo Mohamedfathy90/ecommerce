@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '4880f12c9a136165b4710b9a89508d361addfbb5',
+        'reference' => '98f94759cfe5e69074853dacea7e4b4125dd6015',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -400,7 +400,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '4880f12c9a136165b4710b9a89508d361addfbb5',
+            'reference' => '98f94759cfe5e69074853dacea7e4b4125dd6015',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -847,6 +847,15 @@
             'replaced' => array(
                 0 => '4.7.4',
             ),
+        ),
+        'rtconner/laravel-tagging' => array(
+            'pretty_version' => '4.1.4',
+            'version' => '4.1.4.0',
+            'reference' => 'bcce5300c01e5706b01f3dd3d7c920b46eb63c06',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rtconner/laravel-tagging',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'sebastian/cli-parser' => array(
             'pretty_version' => '2.0.0',

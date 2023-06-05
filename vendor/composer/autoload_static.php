@@ -172,6 +172,7 @@ class ComposerStaticInit8caacbda8b13e3051fbc84ffa050fe10
         'C' => 
         array (
             'Cron\\' => 5,
+            'Conner\\Tagging\\' => 15,
             'Clockwork\\' => 10,
             'Carbon\\' => 7,
         ),
@@ -527,6 +528,10 @@ class ComposerStaticInit8caacbda8b13e3051fbc84ffa050fe10
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'Conner\\Tagging\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rtconner/laravel-tagging/src',
+        ),
         'Clockwork\\' => 
         array (
             0 => __DIR__ . '/..' . '/itsgoingd/clockwork/Clockwork',
@@ -572,7 +577,9 @@ class ComposerStaticInit8caacbda8b13e3051fbc84ffa050fe10
         'App\\Http\\Controllers\\BrandController' => __DIR__ . '/../..' . '/app/Http/Controllers/BrandController.php',
         'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
+        'App\\Http\\Controllers\\SubcategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/SubcategoryController.php',
         'App\\Http\\Controllers\\VendorController' => __DIR__ . '/../..' . '/app/Http/Controllers/VendorController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Livewire\\Updatepassword' => __DIR__ . '/../..' . '/app/Http/Livewire/Updatepassword.php',
@@ -593,6 +600,9 @@ class ComposerStaticInit8caacbda8b13e3051fbc84ffa050fe10
         'App\\Http\\Traits\\UpdatePasswordTrait' => __DIR__ . '/../..' . '/app/Http/Traits/UpdatePasswordTrait.php',
         'App\\Models\\Brand' => __DIR__ . '/../..' . '/app/Models/Brand.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
+        'App\\Models\\ProductImage' => __DIR__ . '/../..' . '/app/Models/ProductImage.php',
+        'App\\Models\\Subcategory' => __DIR__ . '/../..' . '/app/Models/Subcategory.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -785,6 +795,17 @@ class ComposerStaticInit8caacbda8b13e3051fbc84ffa050fe10
         'Clockwork\\Support\\Vanilla\\Clockwork' => __DIR__ . '/..' . '/itsgoingd/clockwork/Clockwork/Support/Vanilla/Clockwork.php',
         'Clockwork\\Web\\Web' => __DIR__ . '/..' . '/itsgoingd/clockwork/Clockwork/Web/Web.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Conner\\Tagging\\Console\\Commands\\GenerateTagGroup' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Console/Commands/GenerateTagGroup.php',
+        'Conner\\Tagging\\Contracts\\TaggableContract' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Contracts/TaggableContract.php',
+        'Conner\\Tagging\\Events\\TagAdded' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Events/TagAdded.php',
+        'Conner\\Tagging\\Events\\TagRemoved' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Events/TagRemoved.php',
+        'Conner\\Tagging\\Model\\Tag' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Model/Tag.php',
+        'Conner\\Tagging\\Model\\TagGroup' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Model/TagGroup.php',
+        'Conner\\Tagging\\Model\\Tagged' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Model/Tagged.php',
+        'Conner\\Tagging\\Providers\\LumenTaggingServiceProvider' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Providers/LumenTaggingServiceProvider.php',
+        'Conner\\Tagging\\Providers\\TaggingServiceProvider' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Providers/TaggingServiceProvider.php',
+        'Conner\\Tagging\\Taggable' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Taggable.php',
+        'Conner\\Tagging\\TaggingUtility' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/TaggingUtility.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',

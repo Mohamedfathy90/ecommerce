@@ -71,6 +71,7 @@ Route::post('/add-subcategory', [SubcategoryController::class , 'store' ]);
 Route::get('/edit-subcategory/{subcategory}', [SubcategoryController::class , 'show' ]);
 Route::patch('/edit-subcategory/{subcategory}', [SubcategoryController::class , 'update' ]);
 Route::delete('/delete-subcategory/{subcategory}', [SubcategoryController::class , 'destroy' ])->name('subcategory.delete');
+Route::get('/get-subcategories/{category}', [SubcategoryController::class , 'getsubcategories' ]);
 
 Route::get('/all-products', [ProductController::class , 'index' ]);
 Route::get('/add-product', [ProductController::class , 'create' ]);

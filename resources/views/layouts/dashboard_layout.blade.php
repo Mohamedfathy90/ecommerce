@@ -12,10 +12,10 @@
 	
 	<link href="{{asset('back')}}/assets/plugins/input-tags/css/tagsinput.css" rel="stylesheet" />
 	<!--plugins-->
-	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.5/css/perfect-scrollbar.css" integrity="sha512-2xznCEl5y5T5huJ2hCmwhvVtIGVF1j/aNUEJwi/BzpWPKEzsZPGpwnP1JrIMmjPpQaVicWOYVu8QvAIg9hwv9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link href="{{asset('back')}}/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
 	<link href="{{asset('back')}}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="{{asset('back')}}/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+	
 	<link href="{{asset('back')}}/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
 	
 	<!-- loader-->
@@ -84,7 +84,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<script src="{{asset('back')}}/assets/plugins/simplebar/js/simplebar.min.js"></script>
 	<script src="{{asset('back')}}/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="{{asset('back')}}/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.5/perfect-scrollbar.min.js" integrity="sha512-X41/A5OSxoi5uqtS6Krhqz8QyyD8E/ZbN7B4IaBSgqPLRbWVuXJXr9UwOujstj71SoVxh5vxgy7kmtd17xrJRw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="{{asset('back')}}/assets/plugins/chartjs/js/Chart.min.js"></script>
 	<script src="{{asset('back')}}/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="{{asset('back')}}/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
@@ -92,8 +92,8 @@
 	<script src="{{asset('back')}}/assets/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
 	<script src="{{asset('back')}}/assets/plugins/jquery-knob/excanvas.js"></script>
 	<script src="{{asset('back')}}/assets/plugins/jquery-knob/jquery.knob.js"></script>
-	
-	
+	<script src="{{ asset('back')}}/assets/plugins/input-tags/js/tagsinput.js"></script>
+	<script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
 	<!--SweetAlert-->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
 	
@@ -102,6 +102,7 @@
 	<!--Datatable-->
 	<script src="{{ asset('back')}}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 	<!--Datatable-->
+	
 	
 	<script>
 	$(document).ready(function() {
@@ -158,24 +159,39 @@
 	)
 }
 )	
-
-	
 	</script>
 	
-	
-	<script src="{{ asset('back')}}/assets/plugins/input-tags/js/tagsinput.js"></script>
-
-<script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin">
-</script>
 
 <script>
    tinymce.init({
 	 selector: '#mytextarea'
    });
 </script>
-	
-	
-	
+
+
+<script>
+$('#maincategory').on('change', function() {
+  var category_id = $("#maincategory").find(":selected").val()
+  
+$.ajax({
+			headers:{
+			'x-csrf-token':$('meta[name="csrf-token"]').attr('content')
+			},
+			url  : "/get-subcategories/"+category_id,
+			type : "GET" , 
+			success : function(response) {
+			var $el = $("#subcategory");
+			$el.empty(); // remove old options
+			$.each (response.subcategories, function(index , value) {
+			$el.append($("<option></option>")
+     		.attr("value", this.id).text(this.name));
+			});
+			} 
+		    });
+});
+</script>
+
+
 	
 	
 	

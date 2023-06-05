@@ -29,7 +29,7 @@ class SubcategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store()
     {
         $credentials = request()->validate([
             'name'  => ['required' ,"unique:subcategories,name"] ,
@@ -82,5 +82,10 @@ class SubcategoryController extends Controller
     public function destroy(Subcategory $subcategory)
     {
         $subcategory->delete();  
+    }
+
+    public function getsubcategories(Category $category){
+        $subcategories = Subcategory::where('category_id',$category->id)->get();
+        return response()->json(['subcategories' => $subcategories]);
     }
 }

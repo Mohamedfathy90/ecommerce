@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
         "realrashid/sweet-alert": "^7.0",
+        "rtconner/laravel-tagging": "^4.1",
         "yoeunes/toastr": "^2.3"
     },
     "require-dev": {
