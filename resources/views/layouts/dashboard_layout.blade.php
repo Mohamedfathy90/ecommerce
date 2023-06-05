@@ -172,7 +172,6 @@
 <script>
 $('#maincategory').on('change', function() {
   var category_id = $("#maincategory").find(":selected").val()
-  
 $.ajax({
 			headers:{
 			'x-csrf-token':$('meta[name="csrf-token"]').attr('content')
@@ -192,7 +191,28 @@ $.ajax({
 </script>
 
 
-	
+<script>
+$('#productitemform').submit(function(e){
+e.preventDefault();
+let formData = new FormData(this);
+// var color = $("#colorID").val();
+// var size = $("#sizeID").val();
+// var quantity = $("#quantityID").val();
+
+$.ajax({
+headers:{
+	'x-csrf-token':$('meta[name="csrf-token"]').attr('content')
+},
+url  : "/add-productitem" ,
+type : "POST" , 
+data : formData,  
+processData:false ,
+contentType:false , 
+			
+})
+})
+
+</script>	
 	
 	
 	

@@ -72,9 +72,9 @@
 						<div class="menu-title">Manage Products</div>
 					</a>
 					<ul>
-						<li> <a href="/all-products"><i class="bx bx-right-arrow-alt"></i>All Products</a>
+						<li> <a href="/all-products"><i class="bx bx-right-arrow-alt"></i>Show all Products</a>
 						</li>
-						<li> <a href="/add-product"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
+						<li> <a href="/add-product"><i class="bx bx-right-arrow-alt"></i>Add main Product</a>
 						</li>
 					</ul>
 				</li>

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductColor;
+use App\Models\ProductItem;
 use App\Models\ProductSize;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view ('admin.all-products' , ['products'=>Product::all()]);
+        return view ('admin.all-products' , ['products'=>Product::with(['seller','brand'])->get()]);
     }
 
     /**
@@ -24,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view ('admin.add-product' , ['brands'=>Brand::all() , 'categories'=>Category::all() ]);
+        return view ('admin.add-product' , ['brands'=>Brand::all() , 'categories'=>Category::all()]);
     }
 
     /**
@@ -61,17 +62,13 @@ class ProductController extends Controller
         // $product->productcolors()->attach($colors_id);
         
 
-        $sizes  = ProductSize::all();
-        foreach($sizes as $size)
-        $sizes_id[] = $size->id; 
-        $product =Product::Find(12);
-        $product->productsizes()->sync($sizes_id);
+        // $sizes  = ProductSize::all();
+        // foreach($sizes as $size)
+        // $sizes_id[] = $size->id; 
+        // $product =Product::Find(12);
+        // $product->productsizes()->sync($sizes_id);
         
     }
-
-
-
-
 
     /**
      * Display the specified resource.
@@ -104,4 +101,7 @@ class ProductController extends Controller
     {
         //
     }
+
+
+    
 }

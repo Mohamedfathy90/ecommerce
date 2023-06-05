@@ -15,12 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->nullable();
-            $table->string('code')->nullable();
-            $table->integer('quantity')->nullable();
             $table->decimal('price',8,2,false)->nullable();
             $table->integer('discount')->nullable();
-            $table->string('color')->nullable();
-            $table->string('size')->nullable();
             $table->string('thumbnail')->nullable();
             $table->text('short_description')->nullable();
             $table->text('long_description')->nullable();

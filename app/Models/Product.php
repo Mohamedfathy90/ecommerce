@@ -11,13 +11,17 @@ class Product extends Model
     use \Conner\Tagging\Taggable;
     protected $guarded =[];
 
-    public function productsizes(){
-        return $this->belongsToMany(ProductSize::class,'product_productsize') ;
+    
+    public function brand(){
+        return $this->belongsTo(Brand::class,'brand_id') ;
     }
     
-    public function productcolors(){
-        return $this->belongsToMany(ProductColor::class,'product_productcolor') ;
+    public function seller(){
+        return $this->belongsTo(User::class,'user_id') ;
     }
 
+    public function productitems(){
+        return $this->hasMany(ProductItem::class) ;
+    }
 
 }

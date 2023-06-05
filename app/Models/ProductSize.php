@@ -11,6 +11,10 @@ class ProductSize extends Model
     protected $guarded =[];
 
     public function products(){
-        return $this->belongsToMany(Product::class,'product_productsize') ;
+        return $this->belongsToMany(Product::class,'product_items') ;
+    }
+    
+    public function productitems(){
+        return $this->hasMany(ProductItem::class.'size_id') ;
     }
 }

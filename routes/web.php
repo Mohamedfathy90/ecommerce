@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductItemController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubcategoryController;
@@ -79,7 +80,9 @@ Route::post('/add-product', [ProductController::class , 'store' ]);
 Route::get('/edit-product/{product}', [ProductController::class , 'show' ]);
 Route::patch('/edit-product/{product}', [ProductController::class , 'update' ]);
 Route::delete('/delete-product/{product}', [ProductController::class , 'destroy' ])->name('product.delete');
-
+Route::get('/productitems/{product}', [ProductItemController::class , 'show' ]);
+Route::get('/add-productitem/{product}', [ProductItemController::class , 'create' ]);
+Route::post('/add-productitem/{product}', [ProductItemController::class , 'store' ]);
 });
 
 

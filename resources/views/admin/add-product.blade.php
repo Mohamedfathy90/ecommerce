@@ -54,16 +54,7 @@
 				<input type="text" name="tags" class="form-control" data-role="tagsinput" value="new product,top product">
 			</div>
 			
-			<div class="mb-3">
-				<label for="inputProductTitle" class="form-label">Product Size</label>
-				<input type="text" name="size" class="form-control" data-role="tagsinput" value="Small,medium,Large ">
-			</div>
-			
-			<div class="mb-3">
-				<label for="inputProductTitle" class="form-label">Product Color</label>
-				<input type="text" name="color" class="form-control" data-role="tagsinput" value="Red,Blue,Black">
-			</div>
-			
+
 			<div class="mb-3">
 				<label for="inputProductDescription" class="form-label">Short Description</label>
 				<textarea name="short_descprition" class="form-control" id="inputProductDescription" rows="3"></textarea>
@@ -105,18 +96,6 @@
 					<input type="text" name="discount" class="form-control" id="inputCompareatprice" placeholder="%">
 				</div>
 				  
-				<div class="col-md-6">
-				  	<label for="inputCostPerPrice" class="form-label">Product Code</label>
-					<input type="text" name="code" class="form-control" id="inputCostPerPrice">
-				</div>
-				  
-				<div class="col-md-6">
-				  	<label for="inputStarPoints" class="form-label">Product Quantity</label>
-					<input type="text" name="quantity" class="form-control" id="inputStarPoints">
-					@error('quantity')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-				</div>
 				  
 				<div class="col-12">
 				  	<label for="inputProductType" class="form-label">Product Brand</label>

@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2023 at 08:37 AM
--- Server version: 8.0.29
+-- Generation Time: Jun 05, 2023 at 11:59 PM
+-- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `brands` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -54,10 +54,10 @@ INSERT INTO `brands` (`id`, `name`, `slug`, `image`, `created_at`, `updated_at`)
 --
 
 CREATE TABLE `categories` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -78,13 +78,13 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `created_at`, `updated_
 --
 
 CREATE TABLE `failed_jobs` (
-  `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -94,9 +94,9 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `migrations` (
-  `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -117,11 +117,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2016_06_29_073615_create_tag_groups_table', 5),
 (14, '2016_06_29_073615_update_tags_table', 5),
 (15, '2020_03_13_083515_add_description_to_tags_table', 5),
-(16, '2023_05_31_232339_create_products_table', 6),
 (17, '2023_06_03_111837_create_product_sizes_table', 7),
 (18, '2023_06_03_111846_create_product_colors_table', 7),
 (21, '2023_06_03_112333_product_product_color', 8),
-(22, '2023_06_03_112324_product_product_size', 9);
+(22, '2023_06_03_112324_product_product_size', 9),
+(23, '2023_06_05_085420_create_product_items_table', 10),
+(24, '2023_05_31_232339_create_products_table', 11);
 
 -- --------------------------------------------------------
 
@@ -130,8 +131,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -142,12 +143,12 @@ CREATE TABLE `password_reset_tokens` (
 --
 
 CREATE TABLE `personal_access_tokens` (
-  `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -161,26 +162,22 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 CREATE TABLE `products` (
-  `id` bigint UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `quantity` int DEFAULT NULL,
   `price` decimal(8,2) DEFAULT NULL,
-  `discount` int DEFAULT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discount` int(11) DEFAULT NULL,
   `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `short_description` text COLLATE utf8mb4_unicode_ci,
-  `long_description` text COLLATE utf8mb4_unicode_ci,
-  `user_id` bigint UNSIGNED NOT NULL DEFAULT '1',
-  `category_id` bigint UNSIGNED NOT NULL DEFAULT '1',
-  `subcategory_id` bigint UNSIGNED NOT NULL DEFAULT '1',
-  `brand_id` bigint UNSIGNED NOT NULL DEFAULT '3',
-  `hot deals` tinyint(1) NOT NULL DEFAULT '0',
-  `featured` tinyint(1) NOT NULL DEFAULT '0',
-  `special offers` tinyint(1) NOT NULL DEFAULT '0',
-  `special deals` tinyint(1) NOT NULL DEFAULT '0',
+  `short_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `long_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `subcategory_id` bigint(20) UNSIGNED NOT NULL,
+  `brand_id` bigint(20) UNSIGNED NOT NULL,
+  `hot deals` tinyint(1) NOT NULL,
+  `featured` tinyint(1) NOT NULL,
+  `special offers` tinyint(1) NOT NULL,
+  `special deals` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -189,19 +186,9 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `slug`, `code`, `quantity`, `price`, `discount`, `color`, `size`, `thumbnail`, `short_description`, `long_description`, `user_id`, `category_id`, `subcategory_id`, `brand_id`, `hot deals`, `featured`, `special offers`, `special deals`, `created_at`, `updated_at`) VALUES
-(1, 'new product', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-01 18:39:12', '2023-06-01 18:39:12'),
-(2, 'ggggg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-02 03:56:34', '2023-06-02 03:56:34'),
-(3, 'try', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-03 10:13:20', '2023-06-03 10:13:20'),
-(4, 'try', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-03 10:16:00', '2023-06-03 10:16:00'),
-(5, 'try', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-03 10:16:33', '2023-06-03 10:16:33'),
-(6, 'try', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-03 10:18:21', '2023-06-03 10:18:21'),
-(7, 'try', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-03 10:19:02', '2023-06-03 10:19:02'),
-(8, 'try', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-03 10:23:44', '2023-06-03 10:23:44'),
-(9, 'new', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-03 10:26:14', '2023-06-03 10:26:14'),
-(10, 'new', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-03 10:32:00', '2023-06-03 10:32:00'),
-(11, 'new', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-03 10:33:04', '2023-06-03 10:33:04'),
-(12, 'yyeyeyyeye', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 3, 0, 0, 0, 0, '2023-06-03 10:35:46', '2023-06-03 10:35:46');
+INSERT INTO `products` (`id`, `name`, `slug`, `price`, `discount`, `thumbnail`, `short_description`, `long_description`, `user_id`, `category_id`, `subcategory_id`, `brand_id`, `hot deals`, `featured`, `special offers`, `special deals`, `created_at`, `updated_at`) VALUES
+(2, 'shoes', NULL, NULL, NULL, NULL, NULL, NULL, 12, 3, 7, 4, 0, 0, 0, 0, NULL, NULL),
+(4, 'polo shirt', NULL, NULL, NULL, NULL, NULL, NULL, 5, 3, 7, 5, 0, 0, 0, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -210,7 +197,7 @@ INSERT INTO `products` (`id`, `name`, `slug`, `code`, `quantity`, `price`, `disc
 --
 
 CREATE TABLE `product_colors` (
-  `id` bigint UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -232,9 +219,9 @@ INSERT INTO `product_colors` (`id`, `color`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE `product_images` (
-  `id` bigint UNSIGNED NOT NULL,
-  `product_id` bigint UNSIGNED NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -242,48 +229,33 @@ CREATE TABLE `product_images` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_productcolor`
+-- Table structure for table `product_items`
 --
 
-CREATE TABLE `product_productcolor` (
-  `id` bigint UNSIGNED NOT NULL,
-  `product_id` bigint UNSIGNED NOT NULL,
-  `product_color_id` bigint UNSIGNED NOT NULL,
+CREATE TABLE `product_items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `color_id` bigint(20) UNSIGNED NOT NULL,
+  `size_id` bigint(20) UNSIGNED NOT NULL,
+  `SKU` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `product_productcolor`
+-- Dumping data for table `product_items`
 --
 
-INSERT INTO `product_productcolor` (`id`, `product_id`, `product_color_id`, `created_at`, `updated_at`) VALUES
-(1, 12, 1, NULL, NULL),
-(2, 12, 2, NULL, NULL),
-(3, 12, 3, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `product_productsize`
---
-
-CREATE TABLE `product_productsize` (
-  `id` bigint UNSIGNED NOT NULL,
-  `product_id` bigint UNSIGNED NOT NULL,
-  `product_size_id` bigint UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `product_productsize`
---
-
-INSERT INTO `product_productsize` (`id`, `product_id`, `product_size_id`, `created_at`, `updated_at`) VALUES
-(1, 12, 1, NULL, NULL),
-(2, 12, 2, NULL, NULL),
-(3, 12, 3, NULL, NULL);
+INSERT INTO `product_items` (`id`, `product_id`, `color_id`, `size_id`, `SKU`, `quantity`, `created_at`, `updated_at`) VALUES
+(3, 2, 1, 1, '252ssd', 9, '2023-06-05 09:54:59', '2023-06-05 09:54:59'),
+(4, 2, 2, 2, '5555Drr', 50, NULL, NULL),
+(5, 2, 2, 3, '5566R', 0, NULL, NULL),
+(6, 4, 1, 2, 'ss55', 50, '2023-06-05 19:18:29', '2023-06-05 19:18:29'),
+(7, 4, 3, 2, '432', 6, '2023-06-05 19:39:02', '2023-06-05 19:39:02'),
+(9, 4, 1, 3, '413', 9, '2023-06-05 19:50:40', '2023-06-05 19:50:40'),
+(10, 2, 1, 1, '211', 58, '2023-06-05 19:55:37', '2023-06-05 19:55:37'),
+(11, 2, 1, 3, '213', 9, '2023-06-05 19:56:08', '2023-06-05 19:56:08');
 
 -- --------------------------------------------------------
 
@@ -292,7 +264,7 @@ INSERT INTO `product_productsize` (`id`, `product_id`, `product_size_id`, `creat
 --
 
 CREATE TABLE `product_sizes` (
-  `id` bigint UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -314,10 +286,10 @@ INSERT INTO `product_sizes` (`id`, `size`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE `subcategories` (
-  `id` bigint UNSIGNED NOT NULL,
-  `category_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -341,8 +313,8 @@ INSERT INTO `subcategories` (`id`, `category_id`, `name`, `slug`, `created_at`, 
 --
 
 CREATE TABLE `tagging_tagged` (
-  `id` int UNSIGNED NOT NULL,
-  `taggable_id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `taggable_id` int(10) UNSIGNED NOT NULL,
   `taggable_type` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tag_name` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tag_slug` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -385,13 +357,13 @@ INSERT INTO `tagging_tagged` (`id`, `taggable_id`, `taggable_type`, `tag_name`, 
 --
 
 CREATE TABLE `tagging_tags` (
-  `id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `slug` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `suggest` tinyint(1) NOT NULL DEFAULT '0',
-  `count` int UNSIGNED NOT NULL DEFAULT '0',
-  `tag_group_id` int UNSIGNED DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci
+  `suggest` tinyint(1) NOT NULL DEFAULT 0,
+  `count` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `tag_group_id` int(10) UNSIGNED DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -409,7 +381,7 @@ INSERT INTO `tagging_tags` (`id`, `slug`, `name`, `suggest`, `count`, `tag_group
 --
 
 CREATE TABLE `tagging_tag_groups` (
-  `id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `slug` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -421,19 +393,19 @@ CREATE TABLE `tagging_tag_groups` (
 --
 
 CREATE TABLE `users` (
-  `id` bigint UNSIGNED NOT NULL,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `vendor_info` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `role` enum('admin','user','vendor') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
-  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'inactive',
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vendor_info` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` enum('admin','user','vendor') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'inactive',
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -509,6 +481,7 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `products_name_unique` (`name`),
   ADD KEY `products_user_id_foreign` (`user_id`),
   ADD KEY `products_category_id_foreign` (`category_id`),
   ADD KEY `products_subcategory_id_foreign` (`subcategory_id`),
@@ -528,20 +501,14 @@ ALTER TABLE `product_images`
   ADD KEY `product_images_product_id_foreign` (`product_id`);
 
 --
--- Indexes for table `product_productcolor`
+-- Indexes for table `product_items`
 --
-ALTER TABLE `product_productcolor`
+ALTER TABLE `product_items`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `product_productcolor_product_id_foreign` (`product_id`),
-  ADD KEY `product_productcolor_product_color_id_foreign` (`product_color_id`);
-
---
--- Indexes for table `product_productsize`
---
-ALTER TABLE `product_productsize`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_productsize_product_id_foreign` (`product_id`),
-  ADD KEY `product_productsize_product_size_id_foreign` (`product_size_id`);
+  ADD UNIQUE KEY `product_items_sku_unique` (`SKU`),
+  ADD KEY `product_items_product_id_foreign` (`product_id`),
+  ADD KEY `product_items_color_id_foreign` (`color_id`),
+  ADD KEY `product_items_size_id_foreign` (`size_id`);
 
 --
 -- Indexes for table `product_sizes`
@@ -596,97 +563,91 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `product_colors`
 --
 ALTER TABLE `product_colors`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `product_productcolor`
+-- AUTO_INCREMENT for table `product_items`
 --
-ALTER TABLE `product_productcolor`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `product_productsize`
---
-ALTER TABLE `product_productsize`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `product_items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product_sizes`
 --
 ALTER TABLE `product_sizes`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `subcategories`
 --
 ALTER TABLE `subcategories`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tagging_tagged`
 --
 ALTER TABLE `tagging_tagged`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tagging_tags`
 --
 ALTER TABLE `tagging_tags`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tagging_tag_groups`
 --
 ALTER TABLE `tagging_tag_groups`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -708,18 +669,12 @@ ALTER TABLE `product_images`
   ADD CONSTRAINT `product_images_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `product_productcolor`
+-- Constraints for table `product_items`
 --
-ALTER TABLE `product_productcolor`
-  ADD CONSTRAINT `product_productcolor_product_color_id_foreign` FOREIGN KEY (`product_color_id`) REFERENCES `product_colors` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `product_productcolor_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `product_productsize`
---
-ALTER TABLE `product_productsize`
-  ADD CONSTRAINT `product_productsize_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `product_productsize_product_size_id_foreign` FOREIGN KEY (`product_size_id`) REFERENCES `product_sizes` (`id`) ON DELETE CASCADE;
+ALTER TABLE `product_items`
+  ADD CONSTRAINT `product_items_color_id_foreign` FOREIGN KEY (`color_id`) REFERENCES `product_colors` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `product_items_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `product_items_size_id_foreign` FOREIGN KEY (`size_id`) REFERENCES `product_sizes` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `subcategories`

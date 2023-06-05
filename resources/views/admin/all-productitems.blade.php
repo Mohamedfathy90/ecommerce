@@ -1,5 +1,5 @@
 @extends('layouts.dashboard_layout')
-@section('title' , 'All Products')
+@section('title' , 'All Product items')
 
 @section('sidebar')
 @include('admin.includes.sidebar')
@@ -19,49 +19,42 @@
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="/admin/dashboard"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">All Products</li>
+								<li class="breadcrumb-item active" aria-current="page">All Product item</li>
 							</ol>
 						</nav>
 					</div>
 					<div class="ms-auto">
 						<div class="btn-group">
-		<a href="/add-product" class="btn btn-primary">Add Product</a> 				 
+					<a href="/add-productitem/{{$product->id}}" class="btn btn-primary">Add Product item</a> 				 
 						</div>
 					</div>
 				</div>
 				<!--end breadcrumb-->
-
-				<hr/>
 				<div class="card">
-					<div class="card-body">
+ 				 <div class="card-body">
+	  			<h5 class="card-title">All Items for {{$product->name}}</h5>
+	  			<hr/>
 						<div class="table-responsive">
 							<table id="example" class="table table-striped table-bordered" style="width:100%">
 								<thead>
 			<tr>
 				<th>Sl</th>
-				<th>Product Name </th>
-				<th>Seller </th>
-				<th>Brand Name </th>
-				<th>Price </th>
-				<th>Discount </th>
-				<th>Action</th> 
-				<th>View Product Items</th> 
+				<th>Color</th> 
+				<th>Size</th> 
+				<th>Available Quantity</th>
+				<th>SKU</th>
 			</tr>
 		</thead>
 		<tbody>
-	@foreach($products as $key => $item)		
+	
+		@foreach($productitems as $key => $item)		
 			<tr>
 				<td> {{ $key+1 }} </td>				
-				<td>{{ $item->name }}</td>
-				<td>{{ $item->seller->name }}</td>
-				<td>{{ $item->brand->name }}</td>
-				<td>{{ $item->price }}</td>
-				<td>{{ $item->discount }}</td>
-				<td>
-<a href="/edit-product" class="btn btn-info">Edit</a>
-<a href="{{ route('product.delete',$item->id) }}" class="btn btn-danger" id="delete" >Delete</a>
-				</td> 
-				<td><a href="/productitems/{{$item->id}}">show product items</a></td>
+				<td>{{ $item->productitemcolor->color }}</td>
+				<td>{{ $item->productitemsize->size }}</td>
+				<td>{{ $item->quantity }}</td>
+				<td>{{ $item->SKU}}</td>
+				
 			</tr>
 			@endforeach
 

@@ -11,6 +11,9 @@ class ProductColor extends Model
     protected $guarded =[];
     
     public function products(){
-        return $this->belongsToMany(Product::class,'product_productcolor') ;
+        return $this->belongsToMany(Product::class,'product_items') ;
+    }
+    public function productitem(){
+        return $this->hasMany(ProductItem::class,'color_id') ;
     }
 }
